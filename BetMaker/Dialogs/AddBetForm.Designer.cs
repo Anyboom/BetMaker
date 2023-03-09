@@ -35,12 +35,12 @@ namespace BetMaker.Dialogs
             this.HomeTeamTextBox = new System.Windows.Forms.TextBox();
             this.PrognosisTextBox = new System.Windows.Forms.TextBox();
             this.MainPicture = new System.Windows.Forms.PictureBox();
-            this.EventNameTextBox = new System.Windows.Forms.TextBox();
-            this.EventNameLabel = new System.Windows.Forms.Label();
-            this.EventDateTime = new System.Windows.Forms.DateTimePicker();
-            this.EventTimeLabel = new System.Windows.Forms.Label();
-            this.СoefficientTextBox = new System.Windows.Forms.TextBox();
-            this.СoefficientLabel = new System.Windows.Forms.Label();
+            this.CompetitionNameTextBox = new System.Windows.Forms.TextBox();
+            this.CompetitionNameLabel = new System.Windows.Forms.Label();
+            this.StartAtDateTime = new System.Windows.Forms.DateTimePicker();
+            this.StartAtDateTimeLabel = new System.Windows.Forms.Label();
+            this.CoefficientTextBox = new System.Windows.Forms.TextBox();
+            this.CoefficientLabel = new System.Windows.Forms.Label();
             this.PrognosisLabel = new System.Windows.Forms.Label();
             this.GuestTeamLabel = new System.Windows.Forms.Label();
             this.HomeTeamLabel = new System.Windows.Forms.Label();
@@ -55,12 +55,12 @@ namespace BetMaker.Dialogs
             this.MainGroup.Controls.Add(this.HomeTeamTextBox);
             this.MainGroup.Controls.Add(this.PrognosisTextBox);
             this.MainGroup.Controls.Add(this.MainPicture);
-            this.MainGroup.Controls.Add(this.EventNameTextBox);
-            this.MainGroup.Controls.Add(this.EventNameLabel);
-            this.MainGroup.Controls.Add(this.EventDateTime);
-            this.MainGroup.Controls.Add(this.EventTimeLabel);
-            this.MainGroup.Controls.Add(this.СoefficientTextBox);
-            this.MainGroup.Controls.Add(this.СoefficientLabel);
+            this.MainGroup.Controls.Add(this.CompetitionNameTextBox);
+            this.MainGroup.Controls.Add(this.CompetitionNameLabel);
+            this.MainGroup.Controls.Add(this.StartAtDateTime);
+            this.MainGroup.Controls.Add(this.StartAtDateTimeLabel);
+            this.MainGroup.Controls.Add(this.CoefficientTextBox);
+            this.MainGroup.Controls.Add(this.CoefficientLabel);
             this.MainGroup.Controls.Add(this.PrognosisLabel);
             this.MainGroup.Controls.Add(this.GuestTeamLabel);
             this.MainGroup.Controls.Add(this.HomeTeamLabel);
@@ -79,6 +79,7 @@ namespace BetMaker.Dialogs
             this.MainButton.TabIndex = 7;
             this.MainButton.Text = "Добавить";
             this.MainButton.UseVisualStyleBackColor = true;
+            this.MainButton.Click += new System.EventHandler(this.MainButton_Click);
             // 
             // GuestTeamTextBox
             // 
@@ -120,58 +121,58 @@ namespace BetMaker.Dialogs
             this.MainPicture.TabIndex = 15;
             this.MainPicture.TabStop = false;
             // 
-            // EventNameTextBox
+            // CompetitionNameTextBox
             // 
-            this.EventNameTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.EventNameTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.EventNameTextBox.Location = new System.Drawing.Point(13, 308);
-            this.EventNameTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
-            this.EventNameTextBox.Name = "EventNameTextBox";
-            this.EventNameTextBox.Size = new System.Drawing.Size(185, 23);
-            this.EventNameTextBox.TabIndex = 6;
+            this.CompetitionNameTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CompetitionNameTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.CompetitionNameTextBox.Location = new System.Drawing.Point(13, 308);
+            this.CompetitionNameTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.CompetitionNameTextBox.Name = "CompetitionNameTextBox";
+            this.CompetitionNameTextBox.Size = new System.Drawing.Size(185, 23);
+            this.CompetitionNameTextBox.TabIndex = 6;
             // 
-            // EventNameLabel
+            // CompetitionNameLabel
             // 
-            this.EventNameLabel.AutoSize = true;
-            this.EventNameLabel.Location = new System.Drawing.Point(13, 290);
-            this.EventNameLabel.Name = "EventNameLabel";
-            this.EventNameLabel.Size = new System.Drawing.Size(139, 15);
-            this.EventNameLabel.TabIndex = 13;
-            this.EventNameLabel.Text = "Название мероприятия:";
+            this.CompetitionNameLabel.AutoSize = true;
+            this.CompetitionNameLabel.Location = new System.Drawing.Point(13, 290);
+            this.CompetitionNameLabel.Name = "CompetitionNameLabel";
+            this.CompetitionNameLabel.Size = new System.Drawing.Size(139, 15);
+            this.CompetitionNameLabel.TabIndex = 13;
+            this.CompetitionNameLabel.Text = "Название мероприятия:";
             // 
-            // EventDateTime
+            // StartAtDateTime
             // 
-            this.EventDateTime.Location = new System.Drawing.Point(13, 257);
-            this.EventDateTime.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
-            this.EventDateTime.Name = "EventDateTime";
-            this.EventDateTime.Size = new System.Drawing.Size(185, 23);
-            this.EventDateTime.TabIndex = 5;
+            this.StartAtDateTime.Location = new System.Drawing.Point(13, 257);
+            this.StartAtDateTime.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.StartAtDateTime.Name = "StartAtDateTime";
+            this.StartAtDateTime.Size = new System.Drawing.Size(185, 23);
+            this.StartAtDateTime.TabIndex = 5;
             // 
-            // EventTimeLabel
+            // StartAtDateTimeLabel
             // 
-            this.EventTimeLabel.AutoSize = true;
-            this.EventTimeLabel.Location = new System.Drawing.Point(13, 239);
-            this.EventTimeLabel.Name = "EventTimeLabel";
-            this.EventTimeLabel.Size = new System.Drawing.Size(159, 15);
-            this.EventTimeLabel.TabIndex = 10;
-            this.EventTimeLabel.Text = "Дата и время мероприятия:";
+            this.StartAtDateTimeLabel.AutoSize = true;
+            this.StartAtDateTimeLabel.Location = new System.Drawing.Point(13, 239);
+            this.StartAtDateTimeLabel.Name = "StartAtDateTimeLabel";
+            this.StartAtDateTimeLabel.Size = new System.Drawing.Size(159, 15);
+            this.StartAtDateTimeLabel.TabIndex = 10;
+            this.StartAtDateTimeLabel.Text = "Дата и время мероприятия:";
             // 
-            // СoefficientTextBox
+            // CoefficientTextBox
             // 
-            this.СoefficientTextBox.Location = new System.Drawing.Point(13, 190);
-            this.СoefficientTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
-            this.СoefficientTextBox.Name = "СoefficientTextBox";
-            this.СoefficientTextBox.Size = new System.Drawing.Size(185, 23);
-            this.СoefficientTextBox.TabIndex = 4;
+            this.CoefficientTextBox.Location = new System.Drawing.Point(13, 190);
+            this.CoefficientTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.CoefficientTextBox.Name = "CoefficientTextBox";
+            this.CoefficientTextBox.Size = new System.Drawing.Size(185, 23);
+            this.CoefficientTextBox.TabIndex = 4;
             // 
-            // СoefficientLabel
+            // CoefficientLabel
             // 
-            this.СoefficientLabel.AutoSize = true;
-            this.СoefficientLabel.Location = new System.Drawing.Point(13, 172);
-            this.СoefficientLabel.Name = "СoefficientLabel";
-            this.СoefficientLabel.Size = new System.Drawing.Size(87, 15);
-            this.СoefficientLabel.TabIndex = 8;
-            this.СoefficientLabel.Text = "Коэффициент:";
+            this.CoefficientLabel.AutoSize = true;
+            this.CoefficientLabel.Location = new System.Drawing.Point(13, 172);
+            this.CoefficientLabel.Name = "CoefficientLabel";
+            this.CoefficientLabel.Size = new System.Drawing.Size(87, 15);
+            this.CoefficientLabel.TabIndex = 8;
+            this.CoefficientLabel.Text = "Коэффициент:";
             // 
             // PrognosisLabel
             // 
@@ -225,13 +226,13 @@ namespace BetMaker.Dialogs
         private System.Windows.Forms.Label GuestTeamLabel;
         private System.Windows.Forms.Label HomeTeamLabel;
         private System.Windows.Forms.Label PrognosisLabel;
-        private System.Windows.Forms.Label СoefficientLabel;
-        private System.Windows.Forms.TextBox СoefficientTextBox;
+        private System.Windows.Forms.Label CoefficientLabel;
+        private System.Windows.Forms.TextBox CoefficientTextBox;
         private System.Windows.Forms.PictureBox MainPicture;
-        private System.Windows.Forms.TextBox EventNameTextBox;
-        private System.Windows.Forms.Label EventNameLabel;
-        private System.Windows.Forms.DateTimePicker EventDateTime;
-        private System.Windows.Forms.Label EventTimeLabel;
+        private System.Windows.Forms.TextBox CompetitionNameTextBox;
+        private System.Windows.Forms.Label CompetitionNameLabel;
+        private System.Windows.Forms.DateTimePicker StartAtDateTime;
+        private System.Windows.Forms.Label StartAtDateTimeLabel;
         private System.Windows.Forms.TextBox GuestTeamTextBox;
         private System.Windows.Forms.TextBox HomeTeamTextBox;
         private System.Windows.Forms.TextBox PrognosisTextBox;

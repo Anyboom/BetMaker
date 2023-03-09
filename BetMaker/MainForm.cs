@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BetMaker.Dialogs;
 
 namespace BetMaker
 {
@@ -17,5 +18,10 @@ namespace BetMaker
             InitializeComponent();
         }
 
+        private void AddBetTool_Click(object sender, EventArgs e)
+        {
+            AddBetForm tempForm = new AddBetForm();
+            tempForm.ShowDialog();
+        }
     }
 }

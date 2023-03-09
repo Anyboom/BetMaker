@@ -9,14 +9,14 @@ namespace BetMaker.Models
     class Bet
     {
         public int Id { get; set; }
-        public string HomeTeam { get; set; }
-        public string GuestTeam { get; set; }
-        public string Prognosis { get; set; }
-        public string EventName { get; set; }
+        public Team HomeTeam { get; set; }
+        public Team GuestTeam { get; set; }
+        public Prognosis Prognosis { get; set; }
+        public Competition Competition { get; set; }
         public float Сoefficient { get; set; }
         public BetStatus Result { get; set; }
-        public DateTime EventTime { get; set; }
+        public DateTime StartAt { get; set; }
         public DateTime CreatedAt { get; set; }
-        public DateTime DeletedAt { get; set; }
+        public DateTime? DeletedAt { get; set; }
     }
 }

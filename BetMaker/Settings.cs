@@ -8,8 +8,7 @@ namespace BetMaker
 {
     class Settings
     {
-        public static string PathTeams = "Teams.txt";
-        public static string PathEvents = "Events.txt";
-        public static string PathPrognoses = "Prognoses.txt";
+        public static string PathDatabase = "BetMaker.db";
+        public static string TitleProject = "BetMaker";
     }
 }
