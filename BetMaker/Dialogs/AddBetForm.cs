@@ -19,101 +19,100 @@ namespace BetMaker.Dialogs
         {
             InitializeComponent();
 
-            AutoCompleteStringCollection TeamsAutoComplete = new AutoCompleteStringCollection();
-            AutoCompleteStringCollection CompetiotionsAutoComplete = new AutoCompleteStringCollection();
-            AutoCompleteStringCollection PrognosesAutoComplete = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection teamsAutoComplete = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection competiotionsAutoComplete = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection prognosesAutoComplete = new AutoCompleteStringCollection();
 
-            using LiteDatabase Db = new LiteDatabase(Settings.PathDatabase);
+            using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
 
-            string[] Teams = Db.GetCollection<Team>("Team").FindAll().Select(x => x.Name).ToArray();
-            string[] Competitions = Db.GetCollection<Competition>("Competition").FindAll().Select(x => x.Name).ToArray();
-            string[] Prognoses = Db.GetCollection<Prognosis>("Prognosis").FindAll().Select(x => x.Name).ToArray();
+            string[] teams = db.GetCollection<Team>("Team").FindAll().Select(x => x.Name).ToArray();
+            string[] competitions = db.GetCollection<Competition>("Competition").FindAll().Select(x => x.Name).ToArray();
+            string[] prognoses = db.GetCollection<Prognosis>("Prognosis").FindAll().Select(x => x.Name).ToArray();
 
-            TeamsAutoComplete.AddRange(Teams);
-            CompetiotionsAutoComplete.AddRange(Competitions);
-            PrognosesAutoComplete.AddRange(Prognoses);
+            teamsAutoComplete.AddRange(teams);
+            competiotionsAutoComplete.AddRange(competitions);
+            prognosesAutoComplete.AddRange(prognoses);
 
-            HomeTeamTextBox.AutoCompleteCustomSource = TeamsAutoComplete;
-            GuestTeamTextBox.AutoCompleteCustomSource = TeamsAutoComplete;
-            CompetitionNameTextBox.AutoCompleteCustomSource = CompetiotionsAutoComplete;
-            PrognosisTextBox.AutoCompleteCustomSource = PrognosesAutoComplete;
+            HomeTeamTextBox.AutoCompleteCustomSource = teamsAutoComplete;
+            GuestTeamTextBox.AutoCompleteCustomSource = teamsAutoComplete;
+            CompetitionNameTextBox.AutoCompleteCustomSource = competiotionsAutoComplete;
+            PrognosisTextBox.AutoCompleteCustomSource = prognosesAutoComplete;
         }
 
         private void MainButton_Click(object sender, EventArgs e)
         {
-            string HomeTeamResult = HomeTeamTextBox.Text,
-                   GuestTeamResult = GuestTeamTextBox.Text,
-                   CompetitionResult = CompetitionNameTextBox.Text,
-                   PrognosisResult = PrognosisTextBox.Text;
+            string homeTeamResult = HomeTeamTextBox.Text,
+                   guestTeamResult = GuestTeamTextBox.Text,
+                   competitionResult = CompetitionNameTextBox.Text,
+                   prognosisResult = PrognosisTextBox.Text;
 
-            DateTime StartAtResult = StartAtDateTime.Value;
-            float CoefficientResult = float.Parse(CoefficientTextBox.Text);
+            DateTime startAtResult = StartAtDateTime.Value;
+            float coefficientResult = float.Parse(CoefficientTextBox.Text);
 
-            using LiteDatabase Db = new LiteDatabase(Settings.PathDatabase);
+            using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
 
-            var TeamDb = Db.GetCollection<Team>("Team");
-            var CompetitionDb = Db.GetCollection<Competition>("Competition");
-            var PrognosisDb = Db.GetCollection<Prognosis>("Prognosis");
+            var teamDb = db.GetCollection<Team>("Team");
+            var competitionDb = db.GetCollection<Competition>("Competition");
+            var prognosisDb = db.GetCollection<Prognosis>("Prognosis");
 
             // Если нет домашней команды, то добавляем.
-            if (TeamDb.Exists(x => x.Name == HomeTeamResult) == false)
+            if (teamDb.Exists(x => x.Name == homeTeamResult) == false)
             {
                 Team TempTeam = new Team()
                 {
-                    Name = HomeTeamResult
+                    Name = homeTeamResult
                 };
 
-                TeamDb.Insert(TempTeam);
+                teamDb.Insert(TempTeam);
             }
 
             // Если нет гостевой команды, то добавляем.
-            if (TeamDb.Exists(x => x.Name == GuestTeamResult) == false)
+            if (teamDb.Exists(x => x.Name == guestTeamResult) == false)
             {
-                Team TempTeam = new Team()
+                Team newTeam = new Team()
                 {
-                    Name = GuestTeamResult
+                    Name = guestTeamResult
                 };
 
-                TeamDb.Insert(TempTeam);
+                teamDb.Insert(newTeam);
             }
 
             // Если нет соревнования, то добавляем.
-            if (CompetitionDb.Exists(x => x.Name == CompetitionResult) == false)
+            if (competitionDb.Exists(x => x.Name == competitionResult) == false)
             {
-                Competition TempCompetition = new Competition()
+                Competition newCompetition = new Competition()
                 {
-                    Name = CompetitionResult
+                    Name = competitionResult
                 };
 
-                CompetitionDb.Insert(TempCompetition);
+                competitionDb.Insert(newCompetition);
             }
 
             // Если нет прогноза, то добавляем.
-            if (PrognosisDb.Exists(x => x.Name == PrognosisResult) == false)
+            if (prognosisDb.Exists(x => x.Name == prognosisResult) == false)
             {
-                Prognosis TempPrognosis = new Prognosis()
+                Prognosis tempPrognosis = new Prognosis()
                 {
-                    Name = PrognosisResult
+                    Name = prognosisResult
                 };
 
-                PrognosisDb.Insert(TempPrognosis);
+                prognosisDb.Insert(tempPrognosis);
             }
 
-            Bet BetResult = new Bet();
+            Bet newBet = new Bet();
 
-            BetResult.HomeTeam = TeamDb.FindOne(x => x.Name == HomeTeamResult);
-            BetResult.GuestTeam = TeamDb.FindOne(x => x.Name == GuestTeamResult);
-            BetResult.Competition = CompetitionDb.FindOne(x => x.Name == CompetitionResult);
-            BetResult.Prognosis = PrognosisDb.FindOne(x => x.Name == PrognosisResult);
+            newBet.HomeTeam = teamDb.FindOne(x => x.Name == homeTeamResult);
+            newBet.GuestTeam = teamDb.FindOne(x => x.Name == guestTeamResult);
+            newBet.Competition = competitionDb.FindOne(x => x.Name == competitionResult);
+            newBet.Prognosis = prognosisDb.FindOne(x => x.Name == prognosisResult);
 
-            BetResult.StartAt = StartAtResult;
-            BetResult.Result = BetStatus.NotCalculated;
-            BetResult.Сoefficient = CoefficientResult;
-            BetResult.CreatedAt = DateTime.Now;
+            newBet.StartAt = startAtResult;
+            newBet.Result = BetStatus.NotCalculated;
+            newBet.Сoefficient = coefficientResult;
+            newBet.CreatedAt = DateTime.Now;
+            newBet.IsDeleted = false;
 
-            Db.GetCollection<Bet>("Bet").Insert(BetResult);
-
-            Db.Commit();
+            db.GetCollection<Bet>("Bet").Insert(newBet);
         }
     }
 }

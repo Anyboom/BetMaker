@@ -59,5 +59,14 @@ namespace BetMaker.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на dfssdffsd.
+        /// </summary>
+        internal static string dsfdfsd {
+            get {
+                return ResourceManager.GetString("dsfdfsd", resourceCulture);
+            }
+        }
     }
 }

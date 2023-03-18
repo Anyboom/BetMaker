@@ -142,6 +142,8 @@ namespace BetMaker.Dialogs
             // 
             // StartAtDateTime
             // 
+            this.StartAtDateTime.CustomFormat = "hh:mm | d MMM yyyy";
+            this.StartAtDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.StartAtDateTime.Location = new System.Drawing.Point(13, 257);
             this.StartAtDateTime.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.StartAtDateTime.Name = "StartAtDateTime";
