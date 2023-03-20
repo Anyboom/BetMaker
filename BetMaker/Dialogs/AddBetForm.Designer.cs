@@ -79,13 +79,12 @@ namespace BetMaker.Dialogs
             this.MainButton.TabIndex = 7;
             this.MainButton.Text = "Добавить";
             this.MainButton.UseVisualStyleBackColor = true;
-            this.MainButton.Click += new System.EventHandler(this.MainButton_Click);
             // 
             // GuestTeamTextBox
             // 
             this.GuestTeamTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.GuestTeamTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.GuestTeamTextBox.Location = new System.Drawing.Point(13, 37);
+            this.GuestTeamTextBox.Location = new System.Drawing.Point(13, 88);
             this.GuestTeamTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.GuestTeamTextBox.Name = "GuestTeamTextBox";
             this.GuestTeamTextBox.Size = new System.Drawing.Size(185, 23);
@@ -95,7 +94,7 @@ namespace BetMaker.Dialogs
             // 
             this.HomeTeamTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.HomeTeamTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.HomeTeamTextBox.Location = new System.Drawing.Point(13, 88);
+            this.HomeTeamTextBox.Location = new System.Drawing.Point(13, 37);
             this.HomeTeamTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.HomeTeamTextBox.Name = "HomeTeamTextBox";
             this.HomeTeamTextBox.Size = new System.Drawing.Size(185, 23);
@@ -142,7 +141,7 @@ namespace BetMaker.Dialogs
             // 
             // StartAtDateTime
             // 
-            this.StartAtDateTime.CustomFormat = "hh:mm | d MMM yyyy";
+            this.StartAtDateTime.CustomFormat = "HH:mm | d MMM yyyy";
             this.StartAtDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.StartAtDateTime.Location = new System.Drawing.Point(13, 257);
             this.StartAtDateTime.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
@@ -175,6 +174,7 @@ namespace BetMaker.Dialogs
             this.CoefficientLabel.Size = new System.Drawing.Size(87, 15);
             this.CoefficientLabel.TabIndex = 8;
             this.CoefficientLabel.Text = "Коэффициент:";
+            this.CoefficientLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PrognosisLabel
             // 
@@ -188,7 +188,7 @@ namespace BetMaker.Dialogs
             // GuestTeamLabel
             // 
             this.GuestTeamLabel.AutoSize = true;
-            this.GuestTeamLabel.Location = new System.Drawing.Point(13, 19);
+            this.GuestTeamLabel.Location = new System.Drawing.Point(13, 70);
             this.GuestTeamLabel.Name = "GuestTeamLabel";
             this.GuestTeamLabel.Size = new System.Drawing.Size(108, 15);
             this.GuestTeamLabel.TabIndex = 2;
@@ -197,7 +197,7 @@ namespace BetMaker.Dialogs
             // HomeTeamLabel
             // 
             this.HomeTeamLabel.AutoSize = true;
-            this.HomeTeamLabel.Location = new System.Drawing.Point(13, 70);
+            this.HomeTeamLabel.Location = new System.Drawing.Point(13, 19);
             this.HomeTeamLabel.Name = "HomeTeamLabel";
             this.HomeTeamLabel.Size = new System.Drawing.Size(120, 15);
             this.HomeTeamLabel.TabIndex = 0;

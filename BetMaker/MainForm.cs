@@ -37,18 +37,43 @@ namespace BetMaker
 
             MainGrid.Sort(MainGrid.Columns[8], ListSortDirection.Descending);
 
-            StartDateTime.Value = DateTime.Now.AddDays(-4);
-            EndDateTime.Value = DateTime.Now.AddDays(+4);
+            StartRangeDateTime.Value = DateTime.Now.AddDays(-4);
+            EndRangeDateTime.Value = DateTime.Now.AddDays(+4);
+
+            AddBetTool.Click += (sender, args) => AddBet();
+            MainGrid.CellFormatting += (sender, args) => MainGridCellFormatting(args);
+            RemoveBetTool.Click += (sender, args) => RemoveBet();
+            UpdateTableTool.Click += (sender, args) => UpdateTable();
+            WinStatusTool.Click += (sender, args) => ChangeBetStatus(BetStatus.Win);
+            LoseStatusTool.Click += (sender, args) => ChangeBetStatus(BetStatus.Lose);
+            ReturnStatusTool.Click += (sender, args) => ChangeBetStatus(BetStatus.Return);
 
         }
 
-        private void AddBetTool_Click(object sender, EventArgs e)
+        private void ChangeBetStatus(BetStatus betStatus)
         {
-            AddBetForm tempForm = new AddBetForm();
-            tempForm.ShowDialog();
+            List<int> ids = MainGrid.SelectedRows.Cast<DataGridViewRow>().Select(x => Convert.ToInt32(x.Cells[0].Value)).ToList();
+            List<int> idsCells = MainGrid.SelectedRows.Cast<DataGridViewRow>().Select(x => Convert.ToInt32(x.Index)).ToList();
+
+            if (ids.Count == 0)
+            {
+                return;
+            }
+
+            using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
+
+            var betDb = db.GetCollection<Bet>("Bet");
+
+            foreach (var bet in ids.Select(id => betDb.FindById(id)))
+            {
+                bet.Result = betStatus;
+                betDb.Update(bet);
+            }
+
+            idsCells.ForEach(x => MainGrid.Rows[x].Cells[6].Value = betStatus);
         }
 
-        private void MainGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void MainGridCellFormatting(DataGridViewCellFormattingEventArgs e)
         {
             if (e.Value is BetStatus typeFormat)
             {
@@ -71,13 +96,30 @@ namespace BetMaker
 
             if ((e.ColumnIndex == 8 || e.ColumnIndex == 7) && e.Value is DateTime dateFormat)
             {
-                e.Value = dateFormat.ToString("hh:mm | d MMM yyyy");
+                e.Value = dateFormat.ToString("HH:mm | d MMM yyyy");
             }
         }
 
-        private void RemoveTool_Click(object sender, EventArgs e)
+        private void AddBet()
+        {
+            AddBetForm tempForm = new AddBetForm();
+            
+            DialogResult result = tempForm.ShowDialog();
+
+            if (result == DialogResult.OK && StartRangeDateTime.Value <= tempForm.NewBet.StartAt && tempForm.NewBet.StartAt <= EndRangeDateTime.Value)
+            {
+                mainTable.Rows.Add(tempForm.NewBet.Id, tempForm.NewBet.HomeTeam, tempForm.NewBet.GuestTeam, tempForm.NewBet.Prognosis, tempForm.NewBet.Сoefficient, tempForm.NewBet.Competition, tempForm.NewBet.Result, tempForm.NewBet.StartAt, tempForm.NewBet.CreatedAt);
+            }
+        }
+
+        private void RemoveBet()
         {
             List<int> ids = MainGrid.SelectedRows.Cast<DataGridViewRow>().Select(x => Convert.ToInt32(x.Cells[0].Value)).ToList();
+
+            if (ids.Count == 0)
+            {
+                return;
+            }
 
             DialogResult result = MessageService.ShowQuestion("Вы точно хотите удалить выбранные позиции ?", MessageBoxButtons.YesNo);
 
@@ -95,13 +137,18 @@ namespace BetMaker
             }
         }
 
-        private void UpdateTableTool_Click(object sender, EventArgs e)
+        private void UpdateTable()
         {
+            if (StartRangeDateTime.Value > EndRangeDateTime.Value)
+            {
+                return;
+            }
+
             using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
 
             mainTable.Clear();
 
-            foreach (Bet bet in db.GetCollection<Bet>("Bet").Find(x => x.IsDeleted == false && StartDateTime.Value <= x.StartAt && x.StartAt <= EndDateTime.Value))
+            foreach (Bet bet in db.GetCollection<Bet>("Bet").Find(x => x.IsDeleted == false && StartRangeDateTime.Value <= x.StartAt && x.StartAt <= EndRangeDateTime.Value))
             {
                 mainTable.Rows.Add(bet.Id, bet.HomeTeam, bet.GuestTeam, bet.Prognosis, bet.Сoefficient, bet.Competition, bet.Result, bet.StartAt, bet.CreatedAt);
             }

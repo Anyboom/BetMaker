@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BetMaker.Models
 {
-    class Prognosis
+    public class Prognosis
     {
         public int Id { get; set; }
         public string Name { get; set; }

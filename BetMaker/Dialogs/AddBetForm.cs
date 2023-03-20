@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BetMaker.Models;
+using BetMaker.Services;
 using LiteDB;
 
 namespace BetMaker.Dialogs
 {
     public partial class AddBetForm : Form
     {
+        public Bet NewBet = new Bet(); 
         public AddBetForm()
         {
             InitializeComponent();
@@ -37,17 +40,64 @@ namespace BetMaker.Dialogs
             GuestTeamTextBox.AutoCompleteCustomSource = teamsAutoComplete;
             CompetitionNameTextBox.AutoCompleteCustomSource = competiotionsAutoComplete;
             PrognosisTextBox.AutoCompleteCustomSource = prognosesAutoComplete;
+
+            MainButton.Click += (sender, args) => AddBet();
         }
 
-        private void MainButton_Click(object sender, EventArgs e)
+        private void AddBet()
         {
             string homeTeamResult = HomeTeamTextBox.Text,
-                   guestTeamResult = GuestTeamTextBox.Text,
-                   competitionResult = CompetitionNameTextBox.Text,
-                   prognosisResult = PrognosisTextBox.Text;
+                guestTeamResult = GuestTeamTextBox.Text,
+                competitionResult = CompetitionNameTextBox.Text,
+                prognosisResult = PrognosisTextBox.Text,
+                coefficientText = CoefficientTextBox.Text;
 
             DateTime startAtResult = StartAtDateTime.Value;
-            float coefficientResult = float.Parse(CoefficientTextBox.Text);
+            float coefficientResult = default;
+
+            StringBuilder errors = new StringBuilder();
+
+            if (string.IsNullOrWhiteSpace(homeTeamResult))
+            {
+                errors.AppendLine("[Домашняя команда]: Поле не может быть пустым.");
+            }
+
+            if (string.IsNullOrWhiteSpace(guestTeamResult))
+            {
+                errors.AppendLine("[Гостевая команда]: Поле не может быть пустым.");
+            }
+
+            if (string.IsNullOrWhiteSpace(competitionResult))
+            {
+                errors.AppendLine("[Название мероприятия]: Поле не может быть пустым.");
+            }
+
+            if (string.IsNullOrWhiteSpace(prognosisResult))
+            {
+                errors.AppendLine("[Прогноз]: Поле не может быть пустым.");
+            }
+
+            if (string.IsNullOrWhiteSpace(coefficientText))
+            {
+                errors.AppendLine("[Коэффициент]: Поле не может быть пустым.");
+            }
+
+            if (startAtResult <= DateTime.Now)
+            {
+                errors.AppendLine("[Дата и время мероприятия]: Событие не может быть в прошлом.");
+            }
+
+            if (float.TryParse(coefficientText, NumberStyles.Any, CultureInfo.InvariantCulture, out
+                    coefficientResult) == false)
+            {
+                errors.AppendLine("[Коэффициент]: Поле должно состоять только из одного дробного числа.");
+            }
+
+            if (errors.Length > 0)
+            {
+                MessageService.ShowError(errors.ToString());
+                return;
+            }
 
             using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
 
@@ -99,20 +149,22 @@ namespace BetMaker.Dialogs
                 prognosisDb.Insert(tempPrognosis);
             }
 
-            Bet newBet = new Bet();
+            NewBet.HomeTeam = teamDb.FindOne(x => x.Name == homeTeamResult);
+            NewBet.GuestTeam = teamDb.FindOne(x => x.Name == guestTeamResult);
+            NewBet.Competition = competitionDb.FindOne(x => x.Name == competitionResult);
+            NewBet.Prognosis = prognosisDb.FindOne(x => x.Name == prognosisResult);
 
-            newBet.HomeTeam = teamDb.FindOne(x => x.Name == homeTeamResult);
-            newBet.GuestTeam = teamDb.FindOne(x => x.Name == guestTeamResult);
-            newBet.Competition = competitionDb.FindOne(x => x.Name == competitionResult);
-            newBet.Prognosis = prognosisDb.FindOne(x => x.Name == prognosisResult);
+            NewBet.StartAt = startAtResult;
+            NewBet.Result = BetStatus.NotCalculated;
+            NewBet.Сoefficient = coefficientResult;
+            NewBet.CreatedAt = DateTime.Now;
+            NewBet.IsDeleted = false;
 
-            newBet.StartAt = startAtResult;
-            newBet.Result = BetStatus.NotCalculated;
-            newBet.Сoefficient = coefficientResult;
-            newBet.CreatedAt = DateTime.Now;
-            newBet.IsDeleted = false;
+            NewBet.Id = db.GetCollection<Bet>("Bet").Insert(NewBet);
 
-            db.GetCollection<Bet>("Bet").Insert(newBet);
+            DialogResult = DialogResult.OK;
+
+            this.Close();
         }
     }
 }

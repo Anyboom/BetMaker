@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BetMaker.Models
 {
-    enum BetStatus
+    public enum BetStatus
     {
         [Description("Выигрыш")]
         Win,
