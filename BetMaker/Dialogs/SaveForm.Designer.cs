@@ -1,0 +1,175 @@
+﻿
+namespace BetMaker.Dialogs
+{
+    partial class SaveForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.TemplateLabel = new System.Windows.Forms.Label();
+            this.TemplateTextBox = new System.Windows.Forms.TextBox();
+            this.SaveButton = new System.Windows.Forms.Button();
+            this.MainGroup = new System.Windows.Forms.GroupBox();
+            this.OpenPathButton = new System.Windows.Forms.Button();
+            this.PathTemplateTextBox = new System.Windows.Forms.TextBox();
+            this.PathTemplateLabel = new System.Windows.Forms.Label();
+            this.InOtherFileRadio = new System.Windows.Forms.RadioButton();
+            this.InOneFileRadio = new System.Windows.Forms.RadioButton();
+            this.TypeOutputLabel = new System.Windows.Forms.Label();
+            this.MainGroup.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // TemplateLabel
+            // 
+            this.TemplateLabel.AutoSize = true;
+            this.TemplateLabel.Location = new System.Drawing.Point(13, 91);
+            this.TemplateLabel.Name = "TemplateLabel";
+            this.TemplateLabel.Size = new System.Drawing.Size(55, 15);
+            this.TemplateLabel.TabIndex = 0;
+            this.TemplateLabel.Text = "Шаблон:";
+            // 
+            // TemplateTextBox
+            // 
+            this.TemplateTextBox.Location = new System.Drawing.Point(13, 109);
+            this.TemplateTextBox.Multiline = true;
+            this.TemplateTextBox.Name = "TemplateTextBox";
+            this.TemplateTextBox.ReadOnly = true;
+            this.TemplateTextBox.Size = new System.Drawing.Size(298, 258);
+            this.TemplateTextBox.TabIndex = 1;
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.Location = new System.Drawing.Point(236, 373);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.TabIndex = 2;
+            this.SaveButton.Text = "Сохранить";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            // 
+            // MainGroup
+            // 
+            this.MainGroup.Controls.Add(this.SaveButton);
+            this.MainGroup.Controls.Add(this.OpenPathButton);
+            this.MainGroup.Controls.Add(this.TemplateTextBox);
+            this.MainGroup.Controls.Add(this.PathTemplateTextBox);
+            this.MainGroup.Controls.Add(this.TemplateLabel);
+            this.MainGroup.Controls.Add(this.PathTemplateLabel);
+            this.MainGroup.Controls.Add(this.InOtherFileRadio);
+            this.MainGroup.Controls.Add(this.InOneFileRadio);
+            this.MainGroup.Controls.Add(this.TypeOutputLabel);
+            this.MainGroup.Location = new System.Drawing.Point(12, 12);
+            this.MainGroup.Name = "MainGroup";
+            this.MainGroup.Padding = new System.Windows.Forms.Padding(10);
+            this.MainGroup.Size = new System.Drawing.Size(325, 409);
+            this.MainGroup.TabIndex = 1;
+            this.MainGroup.TabStop = false;
+            // 
+            // OpenPathButton
+            // 
+            this.OpenPathButton.Location = new System.Drawing.Point(286, 64);
+            this.OpenPathButton.Name = "OpenPathButton";
+            this.OpenPathButton.Size = new System.Drawing.Size(25, 25);
+            this.OpenPathButton.TabIndex = 5;
+            this.OpenPathButton.Text = "О";
+            this.OpenPathButton.UseVisualStyleBackColor = true;
+            // 
+            // PathTemplateTextBox
+            // 
+            this.PathTemplateTextBox.Enabled = false;
+            this.PathTemplateTextBox.Location = new System.Drawing.Point(13, 65);
+            this.PathTemplateTextBox.Name = "PathTemplateTextBox";
+            this.PathTemplateTextBox.ReadOnly = true;
+            this.PathTemplateTextBox.Size = new System.Drawing.Size(275, 23);
+            this.PathTemplateTextBox.TabIndex = 4;
+            // 
+            // PathTemplateLabel
+            // 
+            this.PathTemplateLabel.AutoSize = true;
+            this.PathTemplateLabel.Location = new System.Drawing.Point(13, 47);
+            this.PathTemplateLabel.Name = "PathTemplateLabel";
+            this.PathTemplateLabel.Size = new System.Drawing.Size(99, 15);
+            this.PathTemplateLabel.TabIndex = 3;
+            this.PathTemplateLabel.Text = "Путь к шаблону:";
+            // 
+            // InOtherFileRadio
+            // 
+            this.InOtherFileRadio.AutoSize = true;
+            this.InOtherFileRadio.Location = new System.Drawing.Point(195, 24);
+            this.InOtherFileRadio.Name = "InOtherFileRadio";
+            this.InOtherFileRadio.Size = new System.Drawing.Size(116, 19);
+            this.InOtherFileRadio.TabIndex = 2;
+            this.InOtherFileRadio.Text = "В разные файлы";
+            this.InOtherFileRadio.UseVisualStyleBackColor = true;
+            // 
+            // InOneFileRadio
+            // 
+            this.InOneFileRadio.AutoSize = true;
+            this.InOneFileRadio.Checked = true;
+            this.InOneFileRadio.Location = new System.Drawing.Point(95, 24);
+            this.InOneFileRadio.Name = "InOneFileRadio";
+            this.InOneFileRadio.Size = new System.Drawing.Size(94, 19);
+            this.InOneFileRadio.TabIndex = 1;
+            this.InOneFileRadio.TabStop = true;
+            this.InOneFileRadio.Text = "В один файл";
+            this.InOneFileRadio.UseVisualStyleBackColor = true;
+            // 
+            // TypeOutputLabel
+            // 
+            this.TypeOutputLabel.AutoSize = true;
+            this.TypeOutputLabel.Location = new System.Drawing.Point(13, 26);
+            this.TypeOutputLabel.Name = "TypeOutputLabel";
+            this.TypeOutputLabel.Size = new System.Drawing.Size(73, 15);
+            this.TypeOutputLabel.TabIndex = 0;
+            this.TypeOutputLabel.Text = "Тип вывода:";
+            // 
+            // SaveForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(349, 433);
+            this.Controls.Add(this.MainGroup);
+            this.Name = "SaveForm";
+            this.Text = "SaveForm";
+            this.MainGroup.ResumeLayout(false);
+            this.MainGroup.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label TemplateLabel;
+        private System.Windows.Forms.TextBox TemplateTextBox;
+        private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.GroupBox MainGroup;
+        private System.Windows.Forms.Button OpenPathButton;
+        private System.Windows.Forms.TextBox PathTemplateTextBox;
+        private System.Windows.Forms.Label PathTemplateLabel;
+        private System.Windows.Forms.RadioButton InOtherFileRadio;
+        private System.Windows.Forms.RadioButton InOneFileRadio;
+        private System.Windows.Forms.Label TypeOutputLabel;
+    }
+}

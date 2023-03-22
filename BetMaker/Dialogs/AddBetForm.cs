@@ -87,10 +87,10 @@ namespace BetMaker.Dialogs
                 errors.AppendLine("[Дата и время мероприятия]: Событие не может быть в прошлом.");
             }
 
-            if (float.TryParse(coefficientText, NumberStyles.Any, CultureInfo.InvariantCulture, out
+            if (float.TryParse(coefficientText, NumberStyles.Float, CultureInfo.InvariantCulture, out
                     coefficientResult) == false)
             {
-                errors.AppendLine("[Коэффициент]: Поле должно состоять только из одного дробного числа.");
+                errors.AppendLine("[Коэффициент]: Поле должно состоять только из одного дробного числа и иметь разделитель точку.");
             }
 
             if (errors.Length > 0)
@@ -156,7 +156,7 @@ namespace BetMaker.Dialogs
 
             NewBet.StartAt = startAtResult;
             NewBet.Result = BetStatus.NotCalculated;
-            NewBet.Сoefficient = coefficientResult;
+            NewBet.Coefficient = coefficientResult;
             NewBet.CreatedAt = DateTime.Now;
             NewBet.IsDeleted = false;
 

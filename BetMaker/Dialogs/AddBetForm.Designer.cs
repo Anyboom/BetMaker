@@ -88,7 +88,7 @@ namespace BetMaker.Dialogs
             this.GuestTeamTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.GuestTeamTextBox.Name = "GuestTeamTextBox";
             this.GuestTeamTextBox.Size = new System.Drawing.Size(185, 23);
-            this.GuestTeamTextBox.TabIndex = 1;
+            this.GuestTeamTextBox.TabIndex = 2;
             // 
             // HomeTeamTextBox
             // 
@@ -98,7 +98,7 @@ namespace BetMaker.Dialogs
             this.HomeTeamTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.HomeTeamTextBox.Name = "HomeTeamTextBox";
             this.HomeTeamTextBox.Size = new System.Drawing.Size(185, 23);
-            this.HomeTeamTextBox.TabIndex = 2;
+            this.HomeTeamTextBox.TabIndex = 1;
             // 
             // PrognosisTextBox
             // 

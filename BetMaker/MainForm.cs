@@ -47,7 +47,21 @@ namespace BetMaker
             WinStatusTool.Click += (sender, args) => ChangeBetStatus(BetStatus.Win);
             LoseStatusTool.Click += (sender, args) => ChangeBetStatus(BetStatus.Lose);
             ReturnStatusTool.Click += (sender, args) => ChangeBetStatus(BetStatus.Return);
+            SaveBetTool.Click += (sender, args) => SaveBet();
 
+        }
+
+        private void SaveBet()
+        {
+            List<int> ids = MainGrid.SelectedRows.Cast<DataGridViewRow>().Select(x => Convert.ToInt32(x.Cells[0].Value)).ToList();
+
+            if (ids.Count == 0)
+            {
+                return;
+            }
+
+            SaveForm saveForm = new SaveForm(ids);
+            saveForm.ShowDialog();
         }
 
         private void ChangeBetStatus(BetStatus betStatus)
@@ -108,13 +122,14 @@ namespace BetMaker
 
             if (result == DialogResult.OK && StartRangeDateTime.Value <= tempForm.NewBet.StartAt && tempForm.NewBet.StartAt <= EndRangeDateTime.Value)
             {
-                mainTable.Rows.Add(tempForm.NewBet.Id, tempForm.NewBet.HomeTeam, tempForm.NewBet.GuestTeam, tempForm.NewBet.Prognosis, tempForm.NewBet.Сoefficient, tempForm.NewBet.Competition, tempForm.NewBet.Result, tempForm.NewBet.StartAt, tempForm.NewBet.CreatedAt);
+                mainTable.Rows.Add(tempForm.NewBet.Id, tempForm.NewBet.HomeTeam, tempForm.NewBet.GuestTeam, tempForm.NewBet.Prognosis, tempForm.NewBet.Coefficient, tempForm.NewBet.Competition, tempForm.NewBet.Result, tempForm.NewBet.StartAt, tempForm.NewBet.CreatedAt);
             }
         }
 
         private void RemoveBet()
         {
             List<int> ids = MainGrid.SelectedRows.Cast<DataGridViewRow>().Select(x => Convert.ToInt32(x.Cells[0].Value)).ToList();
+            List<int> idsCells = MainGrid.SelectedRows.Cast<DataGridViewRow>().Select(x => Convert.ToInt32(x.Index)).ToList();
 
             if (ids.Count == 0)
             {
@@ -134,6 +149,8 @@ namespace BetMaker
                     bet.IsDeleted = true;
                     betDb.Update(bet);
                 }
+
+                idsCells.ForEach(x => MainGrid.Rows.RemoveAt(x));
             }
         }
 
@@ -150,7 +167,7 @@ namespace BetMaker
 
             foreach (Bet bet in db.GetCollection<Bet>("Bet").Find(x => x.IsDeleted == false && StartRangeDateTime.Value <= x.StartAt && x.StartAt <= EndRangeDateTime.Value))
             {
-                mainTable.Rows.Add(bet.Id, bet.HomeTeam, bet.GuestTeam, bet.Prognosis, bet.Сoefficient, bet.Competition, bet.Result, bet.StartAt, bet.CreatedAt);
+                mainTable.Rows.Add(bet.Id, bet.HomeTeam, bet.GuestTeam, bet.Prognosis, bet.Coefficient, bet.Competition, bet.Result, bet.StartAt, bet.CreatedAt);
             }
         }
     }
