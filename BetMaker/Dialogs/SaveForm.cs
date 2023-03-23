@@ -30,51 +30,42 @@ namespace BetMaker.Dialogs
 
         private void SaveBet()
         {
-            bool inOneFile = InOneFileRadio.Checked;
-            bool inOtherFile = InOtherFileRadio.Checked;
-
             using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
 
             List<Bet> bets = db.GetCollection<Bet>("Bet").Find(x => Ids.Contains(x.Id)).ToList();
 
             string path = default;
 
-            if (inOneFile)
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt";
+
+            DialogResult dialogResult = saveFileDialog.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
             {
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-                saveFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt";
-
-                DialogResult dialogResult = saveFileDialog.ShowDialog();
-
-                if (dialogResult == DialogResult.OK)
-                {
-                    path = saveFileDialog.FileName;
-                }
-            }
-
-            if (inOtherFile)
-            {
-                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-
-                DialogResult dialogResult = folderBrowserDialog.ShowDialog();
-
-                if (dialogResult == DialogResult.OK)
-                {
-                    path = folderBrowserDialog.SelectedPath;
-                }
+                path = saveFileDialog.FileName;
             }
 
             foreach (Bet bet in bets)
             {
                 string result = TemplateTextBox.Text;
-                result = result.Replace("{id}", bet.Id.ToString());
+
+                string statusBet = bet.Result switch
+                {
+                    BetStatus.NotCalculated => Settings.KeyExists("NotCalculated", "Status") ? Settings.Read("NotCalculated", "Status") : "Не расчитано",
+                    BetStatus.Win => Settings.KeyExists("Win", "Status") ? Settings.Read("Win", "Status") : "Выигрыш",
+                    BetStatus.Lose => Settings.KeyExists("Lose", "Status") ? Settings.Read("Lose", "Status") : "Проигрыш",
+                    BetStatus.Return => Settings.KeyExists("Return", "Status") ? Settings.Read("Return", "Status") : "Возврат"
+                };
+
+                result = result.Replace("{Id}", bet.Id.ToString());
                 result = result.Replace("{HomeTeam}", bet.HomeTeam.Name);
                 result = result.Replace("{GuestTeam}", bet.GuestTeam.Name);
                 result = result.Replace("{Prognosis}", bet.Prognosis.Name);
                 result = result.Replace("{Competition}", bet.Competition.Name);
                 result = result.Replace("{Coefficient}", bet.Coefficient.ToString());
-                result = result.Replace("{Result}", bet.Result.ToString());
+                result = result.Replace("{Result}", statusBet);
                 result = result.Replace("{StartAt}", bet.StartAt.ToString("HH:mm | d MMM yyyy"));
 
                 File.AppendAllText(path, result);

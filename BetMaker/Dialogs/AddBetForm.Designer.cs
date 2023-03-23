@@ -213,7 +213,7 @@ namespace BetMaker.Dialogs
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddBetForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddBetForm";
             this.MainGroup.ResumeLayout(false);
             this.MainGroup.PerformLayout();
