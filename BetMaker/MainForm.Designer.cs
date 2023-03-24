@@ -36,14 +36,16 @@ namespace BetMaker
             this.MainGrid = new System.Windows.Forms.DataGridView();
             this.MainContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.BetTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddBetTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.RemoveBetTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStrip1 = new System.Windows.Forms.ToolStripSeparator();
             this.ChangeBetStatusTool = new System.Windows.Forms.ToolStripMenuItem();
             this.WinStatusTool = new System.Windows.Forms.ToolStripMenuItem();
             this.LoseStatusTool = new System.Windows.Forms.ToolStripMenuItem();
             this.ReturnStatusTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddBetTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.RemoveBetTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStrip2 = new System.Windows.Forms.ToolStripSeparator();
             this.SaveBetTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStrip3 = new System.Windows.Forms.ToolStripSeparator();
             this.UpdateTableTool = new System.Windows.Forms.ToolStripMenuItem();
             this.StartRangeDateTime = new System.Windows.Forms.DateTimePicker();
             this.EndRangeDateTime = new System.Windows.Forms.DateTimePicker();
@@ -92,7 +94,7 @@ namespace BetMaker
             // 
             this.MainContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BetTool,
-            this.toolStripSeparator1,
+            this.toolStrip3,
             this.UpdateTableTool});
             this.MainContextMenu.Name = "MainContextMenu";
             this.MainContextMenu.Size = new System.Drawing.Size(129, 54);
@@ -100,13 +102,32 @@ namespace BetMaker
             // BetTool
             // 
             this.BetTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ChangeBetStatusTool,
             this.AddBetTool,
             this.RemoveBetTool,
+            this.ToolStrip1,
+            this.ChangeBetStatusTool,
+            this.ToolStrip2,
             this.SaveBetTool});
             this.BetTool.Name = "BetTool";
             this.BetTool.Size = new System.Drawing.Size(128, 22);
             this.BetTool.Text = "Ставка";
+            // 
+            // AddBetTool
+            // 
+            this.AddBetTool.Name = "AddBetTool";
+            this.AddBetTool.Size = new System.Drawing.Size(165, 22);
+            this.AddBetTool.Text = "Добавить";
+            // 
+            // RemoveBetTool
+            // 
+            this.RemoveBetTool.Name = "RemoveBetTool";
+            this.RemoveBetTool.Size = new System.Drawing.Size(165, 22);
+            this.RemoveBetTool.Text = "Удалить";
+            // 
+            // ToolStrip1
+            // 
+            this.ToolStrip1.Name = "ToolStrip1";
+            this.ToolStrip1.Size = new System.Drawing.Size(162, 6);
             // 
             // ChangeBetStatusTool
             // 
@@ -139,17 +160,10 @@ namespace BetMaker
             this.ReturnStatusTool.Size = new System.Drawing.Size(136, 22);
             this.ReturnStatusTool.Text = "Возврат";
             // 
-            // AddBetTool
+            // ToolStrip2
             // 
-            this.AddBetTool.Name = "AddBetTool";
-            this.AddBetTool.Size = new System.Drawing.Size(165, 22);
-            this.AddBetTool.Text = "Добавить";
-            // 
-            // RemoveBetTool
-            // 
-            this.RemoveBetTool.Name = "RemoveBetTool";
-            this.RemoveBetTool.Size = new System.Drawing.Size(165, 22);
-            this.RemoveBetTool.Text = "Удалить";
+            this.ToolStrip2.Name = "ToolStrip2";
+            this.ToolStrip2.Size = new System.Drawing.Size(162, 6);
             // 
             // SaveBetTool
             // 
@@ -157,10 +171,10 @@ namespace BetMaker
             this.SaveBetTool.Size = new System.Drawing.Size(165, 22);
             this.SaveBetTool.Text = "Сохранить как";
             // 
-            // toolStripSeparator1
+            // toolStrip3
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(125, 6);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.Size = new System.Drawing.Size(125, 6);
             // 
             // UpdateTableTool
             // 
@@ -209,7 +223,7 @@ namespace BetMaker
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BetMaker";
+            this.Text = "Блокнот ставок";
             this.MainGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainGrid)).EndInit();
             this.MainContextMenu.ResumeLayout(false);
@@ -226,7 +240,7 @@ namespace BetMaker
         private System.Windows.Forms.ToolStripMenuItem BetTool;
         private System.Windows.Forms.ToolStripMenuItem AddBetTool;
         private System.Windows.Forms.ToolStripMenuItem RemoveBetTool;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStrip3;
         private System.Windows.Forms.ToolStripMenuItem UpdateTableTool;
         private System.Windows.Forms.DateTimePicker StartRangeDateTime;
         private System.Windows.Forms.DateTimePicker EndRangeDateTime;
@@ -236,6 +250,8 @@ namespace BetMaker
         private System.Windows.Forms.ToolStripMenuItem LoseStatusTool;
         private System.Windows.Forms.ToolStripMenuItem ReturnStatusTool;
         private System.Windows.Forms.ToolStripMenuItem SaveBetTool;
+        private System.Windows.Forms.ToolStripSeparator ToolStrip1;
+        private System.Windows.Forms.ToolStripSeparator ToolStrip2;
     }
 }
 

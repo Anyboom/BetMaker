@@ -33,6 +33,7 @@ namespace BetMaker.Dialogs
             this.TemplateTextBox = new System.Windows.Forms.TextBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.MainGroup = new System.Windows.Forms.GroupBox();
+            this.MarkersTemplateLinkLabel = new System.Windows.Forms.LinkLabel();
             this.OpenPathButton = new System.Windows.Forms.Button();
             this.PathTemplateTextBox = new System.Windows.Forms.TextBox();
             this.PathTemplateLabel = new System.Windows.Forms.Label();
@@ -68,6 +69,7 @@ namespace BetMaker.Dialogs
             // 
             // MainGroup
             // 
+            this.MainGroup.Controls.Add(this.MarkersTemplateLinkLabel);
             this.MainGroup.Controls.Add(this.SaveButton);
             this.MainGroup.Controls.Add(this.OpenPathButton);
             this.MainGroup.Controls.Add(this.TemplateTextBox);
@@ -80,6 +82,16 @@ namespace BetMaker.Dialogs
             this.MainGroup.Size = new System.Drawing.Size(325, 409);
             this.MainGroup.TabIndex = 1;
             this.MainGroup.TabStop = false;
+            // 
+            // MarkersTemplateLinkLabel
+            // 
+            this.MarkersTemplateLinkLabel.AutoSize = true;
+            this.MarkersTemplateLinkLabel.Location = new System.Drawing.Point(13, 377);
+            this.MarkersTemplateLinkLabel.Name = "MarkersTemplateLinkLabel";
+            this.MarkersTemplateLinkLabel.Size = new System.Drawing.Size(135, 15);
+            this.MarkersTemplateLinkLabel.TabIndex = 6;
+            this.MarkersTemplateLinkLabel.TabStop = true;
+            this.MarkersTemplateLinkLabel.Text = "Маркеры для шаблона";
             // 
             // OpenPathButton
             // 
@@ -117,7 +129,7 @@ namespace BetMaker.Dialogs
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SaveForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "SaveForm";
+            this.Text = "Сохранение ставок";
             this.MainGroup.ResumeLayout(false);
             this.MainGroup.PerformLayout();
             this.ResumeLayout(false);
@@ -133,5 +145,6 @@ namespace BetMaker.Dialogs
         private System.Windows.Forms.Button OpenPathButton;
         private System.Windows.Forms.TextBox PathTemplateTextBox;
         private System.Windows.Forms.Label PathTemplateLabel;
+        private System.Windows.Forms.LinkLabel MarkersTemplateLinkLabel;
     }
 }

@@ -214,7 +214,7 @@ namespace BetMaker.Dialogs
             this.MinimizeBox = false;
             this.Name = "AddBetForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AddBetForm";
+            this.Text = "Добавление ставки";
             this.MainGroup.ResumeLayout(false);
             this.MainGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainPicture)).EndInit();
