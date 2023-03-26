@@ -18,12 +18,12 @@ namespace BetMaker
 
             if (Settings.KeyExists("Token", "Telegram") == false)
             {
-                Settings.Write("Token", "Telegram", String.Empty);
+                Settings.Write("Token", string.Empty, "Telegram");
             }
 
             if (Settings.KeyExists("NameChannel", "Telegram") == false)
             {
-                Settings.Write("NameChannel", "Telegram", String.Empty);
+                Settings.Write("NameChannel", string.Empty, "Telegram");
             }
 
             Application.Run(new MainForm());
