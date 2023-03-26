@@ -1,7 +1,7 @@
 ﻿
 namespace BetMaker.Dialogs
 {
-    partial class SaveForm
+    partial class SaveTelegramForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,9 +33,6 @@ namespace BetMaker.Dialogs
             this.TemplateTextBox = new System.Windows.Forms.TextBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.MainGroup = new System.Windows.Forms.GroupBox();
-            this.FileRadio = new System.Windows.Forms.RadioButton();
-            this.TelegramRadio = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.MarkersTemplateLinkLabel = new System.Windows.Forms.LinkLabel();
             this.OpenPathButton = new System.Windows.Forms.Button();
             this.PathTemplateTextBox = new System.Windows.Forms.TextBox();
@@ -46,7 +43,7 @@ namespace BetMaker.Dialogs
             // TemplateLabel
             // 
             this.TemplateLabel.AutoSize = true;
-            this.TemplateLabel.Location = new System.Drawing.Point(13, 109);
+            this.TemplateLabel.Location = new System.Drawing.Point(13, 70);
             this.TemplateLabel.Name = "TemplateLabel";
             this.TemplateLabel.Size = new System.Drawing.Size(55, 15);
             this.TemplateLabel.TabIndex = 0;
@@ -54,11 +51,11 @@ namespace BetMaker.Dialogs
             // 
             // TemplateTextBox
             // 
-            this.TemplateTextBox.Location = new System.Drawing.Point(13, 127);
+            this.TemplateTextBox.Location = new System.Drawing.Point(13, 88);
             this.TemplateTextBox.Multiline = true;
             this.TemplateTextBox.Name = "TemplateTextBox";
             this.TemplateTextBox.ReadOnly = true;
-            this.TemplateTextBox.Size = new System.Drawing.Size(298, 240);
+            this.TemplateTextBox.Size = new System.Drawing.Size(298, 279);
             this.TemplateTextBox.TabIndex = 1;
             // 
             // SaveButton
@@ -72,9 +69,6 @@ namespace BetMaker.Dialogs
             // 
             // MainGroup
             // 
-            this.MainGroup.Controls.Add(this.FileRadio);
-            this.MainGroup.Controls.Add(this.TelegramRadio);
-            this.MainGroup.Controls.Add(this.label1);
             this.MainGroup.Controls.Add(this.MarkersTemplateLinkLabel);
             this.MainGroup.Controls.Add(this.SaveButton);
             this.MainGroup.Controls.Add(this.OpenPathButton);
@@ -89,37 +83,6 @@ namespace BetMaker.Dialogs
             this.MainGroup.TabIndex = 1;
             this.MainGroup.TabStop = false;
             // 
-            // FileRadio
-            // 
-            this.FileRadio.AutoSize = true;
-            this.FileRadio.Checked = true;
-            this.FileRadio.Location = new System.Drawing.Point(139, 24);
-            this.FileRadio.Name = "FileRadio";
-            this.FileRadio.Size = new System.Drawing.Size(54, 19);
-            this.FileRadio.TabIndex = 9;
-            this.FileRadio.TabStop = true;
-            this.FileRadio.Text = "Файл";
-            this.FileRadio.UseVisualStyleBackColor = true;
-            // 
-            // TelegramRadio
-            // 
-            this.TelegramRadio.AutoSize = true;
-            this.TelegramRadio.Location = new System.Drawing.Point(202, 24);
-            this.TelegramRadio.Name = "TelegramRadio";
-            this.TelegramRadio.Size = new System.Drawing.Size(86, 19);
-            this.TelegramRadio.TabIndex = 8;
-            this.TelegramRadio.Text = "Телеграмм";
-            this.TelegramRadio.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 15);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Способ сохранения:";
-            // 
             // MarkersTemplateLinkLabel
             // 
             this.MarkersTemplateLinkLabel.AutoSize = true;
@@ -132,7 +95,7 @@ namespace BetMaker.Dialogs
             // 
             // OpenPathButton
             // 
-            this.OpenPathButton.Location = new System.Drawing.Point(286, 73);
+            this.OpenPathButton.Location = new System.Drawing.Point(286, 43);
             this.OpenPathButton.Name = "OpenPathButton";
             this.OpenPathButton.Size = new System.Drawing.Size(25, 25);
             this.OpenPathButton.TabIndex = 5;
@@ -142,7 +105,7 @@ namespace BetMaker.Dialogs
             // PathTemplateTextBox
             // 
             this.PathTemplateTextBox.Enabled = false;
-            this.PathTemplateTextBox.Location = new System.Drawing.Point(13, 74);
+            this.PathTemplateTextBox.Location = new System.Drawing.Point(13, 44);
             this.PathTemplateTextBox.Name = "PathTemplateTextBox";
             this.PathTemplateTextBox.ReadOnly = true;
             this.PathTemplateTextBox.Size = new System.Drawing.Size(275, 23);
@@ -151,22 +114,22 @@ namespace BetMaker.Dialogs
             // PathTemplateLabel
             // 
             this.PathTemplateLabel.AutoSize = true;
-            this.PathTemplateLabel.Location = new System.Drawing.Point(13, 56);
+            this.PathTemplateLabel.Location = new System.Drawing.Point(13, 26);
             this.PathTemplateLabel.Name = "PathTemplateLabel";
             this.PathTemplateLabel.Size = new System.Drawing.Size(99, 15);
             this.PathTemplateLabel.TabIndex = 3;
             this.PathTemplateLabel.Text = "Путь к шаблону:";
             // 
-            // SaveForm
+            // SaveTelegramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(349, 433);
             this.Controls.Add(this.MainGroup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "SaveForm";
+            this.Name = "SaveTelegramForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Сохранение ставок";
+            this.Text = "Сохранение ставок [ТЕЛЕГРАМ]";
             this.MainGroup.ResumeLayout(false);
             this.MainGroup.PerformLayout();
             this.ResumeLayout(false);
@@ -183,8 +146,5 @@ namespace BetMaker.Dialogs
         private System.Windows.Forms.TextBox PathTemplateTextBox;
         private System.Windows.Forms.Label PathTemplateLabel;
         private System.Windows.Forms.LinkLabel MarkersTemplateLinkLabel;
-        private System.Windows.Forms.RadioButton FileRadio;
-        private System.Windows.Forms.RadioButton TelegramRadio;
-        private System.Windows.Forms.Label label1;
     }
 }

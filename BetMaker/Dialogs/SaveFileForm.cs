@@ -17,68 +17,18 @@ using Telegram.Bot.Types.Enums;
 
 namespace BetMaker.Dialogs
 {
-    public partial class SaveForm : Form
+    public partial class SaveFileForm : Form
     {
         private List<int> Ids;
-        public SaveForm(List<int> ids)
+        public SaveFileForm(List<int> ids)
         {
             this.Ids = ids;
 
             InitializeComponent();
 
             OpenPathButton.Click += (sender, args) => OpenPath();
-            SaveButton.Click += (sender, args) =>
-            {
-                if (FileRadio.Checked)
-                {
-                    SaveBetFile();
-                }
-
-                if (TelegramRadio.Checked)
-                {
-                    SaveBetTelegram();
-                }
-            };
+            SaveButton.Click += (sender, args) => SaveBet();
             MarkersTemplateLinkLabel.Click += (sender, args) => ShowHelp();
-        }
-
-        private async void SaveBetTelegram()
-        {
-            if (string.IsNullOrWhiteSpace(PathTemplateTextBox.Text) || string.IsNullOrWhiteSpace(TemplateTextBox.Text))
-            {
-                return;
-            }
-
-            using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
-
-            List<Bet> bets = db.GetCollection<Bet>("Bet").Find(x => Ids.Contains(x.Id)).ToList();
-
-            TelegramBotClient client = new TelegramBotClient("5789467122:AAG8vTmWOJMmbG-wNhU0ydH1w0w4YQfUdEA");
-            
-
-            foreach (Bet bet in bets)
-            {
-                string result = TemplateTextBox.Text;
-
-                string statusBet = bet.Result switch
-                {
-                    BetStatus.NotCalculated => Settings.KeyExists("NotCalculated", "Status") ? Settings.Read("NotCalculated", "Status") : "Не расчитано",
-                    BetStatus.Win => Settings.KeyExists("Win", "Status") ? Settings.Read("Win", "Status") : "Выигрыш",
-                    BetStatus.Lose => Settings.KeyExists("Lose", "Status") ? Settings.Read("Lose", "Status") : "Проигрыш",
-                    BetStatus.Return => Settings.KeyExists("Return", "Status") ? Settings.Read("Return", "Status") : "Возврат"
-                };
-
-                result = result.Replace("{Id}", bet.Id.ToString());
-                result = result.Replace("{HomeTeam}", bet.HomeTeam.Name);
-                result = result.Replace("{GuestTeam}", bet.GuestTeam.Name);
-                result = result.Replace("{Prognosis}", bet.Prognosis.Name);
-                result = result.Replace("{Competition}", bet.Competition.Name);
-                result = result.Replace("{Coefficient}", bet.Coefficient.ToString());
-                result = result.Replace("{Result}", statusBet);
-                result = result.Replace("{StartAt}", bet.StartAt.ToString("HH:mm | d MMM yyyy"));
-
-                await client.SendTextMessageAsync("@bukerman", result, ParseMode.Markdown);
-            }
         }
 
         private void ShowHelp()
@@ -96,7 +46,7 @@ namespace BetMaker.Dialogs
             MessageService.ShowInfo(stringHelp.ToString());
         }
 
-        private void SaveBetFile()
+        private void SaveBet()
         {
             if (string.IsNullOrWhiteSpace(PathTemplateTextBox.Text) || string.IsNullOrWhiteSpace(TemplateTextBox.Text))
             {
@@ -143,8 +93,6 @@ namespace BetMaker.Dialogs
                     File.AppendAllText(path, result);
                 }
             }
-
-            
         }
 
         private void OpenPath()

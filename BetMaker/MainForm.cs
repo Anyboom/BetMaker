@@ -47,11 +47,37 @@ namespace BetMaker
             WinStatusTool.Click += (sender, args) => ChangeBetStatus(BetStatus.Win);
             LoseStatusTool.Click += (sender, args) => ChangeBetStatus(BetStatus.Lose);
             ReturnStatusTool.Click += (sender, args) => ChangeBetStatus(BetStatus.Return);
-            SaveBetTool.Click += (sender, args) => SaveBet();
+
+            SaveBetFileTool.Click += (sender, args) => SaveBetFile();
+            SaveBetTelegramTool.Click += (sender, args) => SaveBetTelegram();
 
         }
 
-        private void SaveBet()
+        private void SaveBetTelegram()
+        {
+            if (InternetService.CheckConnection() == false)
+            {
+                MessageService.ShowWarn("Проверьте интернет соединение.");
+                return;
+            }
+            
+            List<int> ids = MainGrid.SelectedRows.Cast<DataGridViewRow>().Select(x => Convert.ToInt32(x.Cells[0].Value)).ToList();
+
+            if (ids.Count == 0)
+            {
+                return;
+            }
+
+            SaveTelegramForm saveForm = new SaveTelegramForm(ids);
+            DialogResult result = saveForm.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                MessageService.ShowInfo("Записи успешно добавлены");
+            }
+        }
+
+        private void SaveBetFile()
         {
             List<int> ids = MainGrid.SelectedRows.Cast<DataGridViewRow>().Select(x => Convert.ToInt32(x.Cells[0].Value)).ToList();
 
@@ -60,7 +86,7 @@ namespace BetMaker
                 return;
             }
 
-            SaveForm saveForm = new SaveForm(ids);
+            SaveFileForm saveForm = new SaveFileForm(ids);
             saveForm.ShowDialog();
         }
 

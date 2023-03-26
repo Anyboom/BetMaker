@@ -50,6 +50,8 @@ namespace BetMaker
             this.StartRangeDateTime = new System.Windows.Forms.DateTimePicker();
             this.EndRangeDateTime = new System.Windows.Forms.DateTimePicker();
             this.RangeLabel = new System.Windows.Forms.Label();
+            this.SaveBetFileTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveBetTelegramTool = new System.Windows.Forms.ToolStripMenuItem();
             this.MainGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainGrid)).BeginInit();
             this.MainContextMenu.SuspendLayout();
@@ -97,7 +99,7 @@ namespace BetMaker
             this.toolStrip3,
             this.UpdateTableTool});
             this.MainContextMenu.Name = "MainContextMenu";
-            this.MainContextMenu.Size = new System.Drawing.Size(129, 54);
+            this.MainContextMenu.Size = new System.Drawing.Size(181, 76);
             // 
             // BetTool
             // 
@@ -109,25 +111,25 @@ namespace BetMaker
             this.ToolStrip2,
             this.SaveBetTool});
             this.BetTool.Name = "BetTool";
-            this.BetTool.Size = new System.Drawing.Size(128, 22);
+            this.BetTool.Size = new System.Drawing.Size(180, 22);
             this.BetTool.Text = "Ставка";
             // 
             // AddBetTool
             // 
             this.AddBetTool.Name = "AddBetTool";
-            this.AddBetTool.Size = new System.Drawing.Size(165, 22);
+            this.AddBetTool.Size = new System.Drawing.Size(180, 22);
             this.AddBetTool.Text = "Добавить";
             // 
             // RemoveBetTool
             // 
             this.RemoveBetTool.Name = "RemoveBetTool";
-            this.RemoveBetTool.Size = new System.Drawing.Size(165, 22);
+            this.RemoveBetTool.Size = new System.Drawing.Size(180, 22);
             this.RemoveBetTool.Text = "Удалить";
             // 
             // ToolStrip1
             // 
             this.ToolStrip1.Name = "ToolStrip1";
-            this.ToolStrip1.Size = new System.Drawing.Size(162, 6);
+            this.ToolStrip1.Size = new System.Drawing.Size(177, 6);
             // 
             // ChangeBetStatusTool
             // 
@@ -136,7 +138,7 @@ namespace BetMaker
             this.LoseStatusTool,
             this.ReturnStatusTool});
             this.ChangeBetStatusTool.Name = "ChangeBetStatusTool";
-            this.ChangeBetStatusTool.Size = new System.Drawing.Size(165, 22);
+            this.ChangeBetStatusTool.Size = new System.Drawing.Size(180, 22);
             this.ChangeBetStatusTool.Text = "Изменить статус";
             // 
             // WinStatusTool
@@ -163,23 +165,26 @@ namespace BetMaker
             // ToolStrip2
             // 
             this.ToolStrip2.Name = "ToolStrip2";
-            this.ToolStrip2.Size = new System.Drawing.Size(162, 6);
+            this.ToolStrip2.Size = new System.Drawing.Size(177, 6);
             // 
             // SaveBetTool
             // 
+            this.SaveBetTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SaveBetFileTool,
+            this.SaveBetTelegramTool});
             this.SaveBetTool.Name = "SaveBetTool";
-            this.SaveBetTool.Size = new System.Drawing.Size(165, 22);
+            this.SaveBetTool.Size = new System.Drawing.Size(180, 22);
             this.SaveBetTool.Text = "Сохранить как";
             // 
             // toolStrip3
             // 
             this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(125, 6);
+            this.toolStrip3.Size = new System.Drawing.Size(177, 6);
             // 
             // UpdateTableTool
             // 
             this.UpdateTableTool.Name = "UpdateTableTool";
-            this.UpdateTableTool.Size = new System.Drawing.Size(128, 22);
+            this.UpdateTableTool.Size = new System.Drawing.Size(180, 22);
             this.UpdateTableTool.Text = "Обновить";
             // 
             // StartRangeDateTime
@@ -210,6 +215,18 @@ namespace BetMaker
             this.RangeLabel.Size = new System.Drawing.Size(63, 15);
             this.RangeLabel.TabIndex = 5;
             this.RangeLabel.Text = "Диапазон:";
+            // 
+            // SaveBetFileTool
+            // 
+            this.SaveBetFileTool.Name = "SaveBetFileTool";
+            this.SaveBetFileTool.Size = new System.Drawing.Size(180, 22);
+            this.SaveBetFileTool.Text = "В файл";
+            // 
+            // SaveBetTelegramTool
+            // 
+            this.SaveBetTelegramTool.Name = "SaveBetTelegramTool";
+            this.SaveBetTelegramTool.Size = new System.Drawing.Size(180, 22);
+            this.SaveBetTelegramTool.Text = "В телеграмм";
             // 
             // MainForm
             // 
@@ -252,6 +269,8 @@ namespace BetMaker
         private System.Windows.Forms.ToolStripMenuItem SaveBetTool;
         private System.Windows.Forms.ToolStripSeparator ToolStrip1;
         private System.Windows.Forms.ToolStripSeparator ToolStrip2;
+        private System.Windows.Forms.ToolStripMenuItem SaveBetFileTool;
+        private System.Windows.Forms.ToolStripMenuItem SaveBetTelegramTool;
     }
 }
 
