@@ -21,6 +21,7 @@ namespace BetMaker
         {
             InitializeComponent();
 
+
             mainTable = new DataTable();
 
             mainTable.Columns.Add("ИД", typeof(int));
@@ -51,6 +52,15 @@ namespace BetMaker
             SaveBetFileTool.Click += (sender, args) => SaveBetFile();
             SaveBetTelegramTool.Click += (sender, args) => SaveBetTelegram();
 
+            SettingsTableTool.Click += (sender, args) => UpdateSettings();
+
+        }
+
+        private void UpdateSettings()
+        {
+            SettingsForm settingsForm = new SettingsForm();
+
+            settingsForm.ShowDialog();
         }
 
         private void SaveBetTelegram()

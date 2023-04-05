@@ -45,13 +45,15 @@ namespace BetMaker
             this.ReturnStatusTool = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStrip2 = new System.Windows.Forms.ToolStripSeparator();
             this.SaveBetTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveBetFileTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveBetTelegramTool = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip3 = new System.Windows.Forms.ToolStripSeparator();
             this.UpdateTableTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.SettingsTableTool = new System.Windows.Forms.ToolStripMenuItem();
             this.StartRangeDateTime = new System.Windows.Forms.DateTimePicker();
             this.EndRangeDateTime = new System.Windows.Forms.DateTimePicker();
             this.RangeLabel = new System.Windows.Forms.Label();
-            this.SaveBetFileTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.SaveBetTelegramTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip4 = new System.Windows.Forms.ToolStripSeparator();
             this.MainGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainGrid)).BeginInit();
             this.MainContextMenu.SuspendLayout();
@@ -97,9 +99,11 @@ namespace BetMaker
             this.MainContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BetTool,
             this.toolStrip3,
+            this.SettingsTableTool,
+            this.toolStrip4,
             this.UpdateTableTool});
             this.MainContextMenu.Name = "MainContextMenu";
-            this.MainContextMenu.Size = new System.Drawing.Size(181, 76);
+            this.MainContextMenu.Size = new System.Drawing.Size(181, 104);
             // 
             // BetTool
             // 
@@ -117,19 +121,19 @@ namespace BetMaker
             // AddBetTool
             // 
             this.AddBetTool.Name = "AddBetTool";
-            this.AddBetTool.Size = new System.Drawing.Size(180, 22);
+            this.AddBetTool.Size = new System.Drawing.Size(165, 22);
             this.AddBetTool.Text = "Добавить";
             // 
             // RemoveBetTool
             // 
             this.RemoveBetTool.Name = "RemoveBetTool";
-            this.RemoveBetTool.Size = new System.Drawing.Size(180, 22);
+            this.RemoveBetTool.Size = new System.Drawing.Size(165, 22);
             this.RemoveBetTool.Text = "Удалить";
             // 
             // ToolStrip1
             // 
             this.ToolStrip1.Name = "ToolStrip1";
-            this.ToolStrip1.Size = new System.Drawing.Size(177, 6);
+            this.ToolStrip1.Size = new System.Drawing.Size(162, 6);
             // 
             // ChangeBetStatusTool
             // 
@@ -138,7 +142,7 @@ namespace BetMaker
             this.LoseStatusTool,
             this.ReturnStatusTool});
             this.ChangeBetStatusTool.Name = "ChangeBetStatusTool";
-            this.ChangeBetStatusTool.Size = new System.Drawing.Size(180, 22);
+            this.ChangeBetStatusTool.Size = new System.Drawing.Size(165, 22);
             this.ChangeBetStatusTool.Text = "Изменить статус";
             // 
             // WinStatusTool
@@ -165,7 +169,7 @@ namespace BetMaker
             // ToolStrip2
             // 
             this.ToolStrip2.Name = "ToolStrip2";
-            this.ToolStrip2.Size = new System.Drawing.Size(177, 6);
+            this.ToolStrip2.Size = new System.Drawing.Size(162, 6);
             // 
             // SaveBetTool
             // 
@@ -173,8 +177,20 @@ namespace BetMaker
             this.SaveBetFileTool,
             this.SaveBetTelegramTool});
             this.SaveBetTool.Name = "SaveBetTool";
-            this.SaveBetTool.Size = new System.Drawing.Size(180, 22);
-            this.SaveBetTool.Text = "Сохранить как";
+            this.SaveBetTool.Size = new System.Drawing.Size(165, 22);
+            this.SaveBetTool.Text = "Сохранить в";
+            // 
+            // SaveBetFileTool
+            // 
+            this.SaveBetFileTool.Name = "SaveBetFileTool";
+            this.SaveBetFileTool.Size = new System.Drawing.Size(187, 22);
+            this.SaveBetFileTool.Text = "Текстовый документ";
+            // 
+            // SaveBetTelegramTool
+            // 
+            this.SaveBetTelegramTool.Name = "SaveBetTelegramTool";
+            this.SaveBetTelegramTool.Size = new System.Drawing.Size(187, 22);
+            this.SaveBetTelegramTool.Text = "Telegram";
             // 
             // toolStrip3
             // 
@@ -185,7 +201,13 @@ namespace BetMaker
             // 
             this.UpdateTableTool.Name = "UpdateTableTool";
             this.UpdateTableTool.Size = new System.Drawing.Size(180, 22);
-            this.UpdateTableTool.Text = "Обновить";
+            this.UpdateTableTool.Text = "Обновить таблицу";
+            // 
+            // SettingsTableTool
+            // 
+            this.SettingsTableTool.Name = "SettingsTableTool";
+            this.SettingsTableTool.Size = new System.Drawing.Size(180, 22);
+            this.SettingsTableTool.Text = "Настройки";
             // 
             // StartRangeDateTime
             // 
@@ -216,17 +238,10 @@ namespace BetMaker
             this.RangeLabel.TabIndex = 5;
             this.RangeLabel.Text = "Диапазон:";
             // 
-            // SaveBetFileTool
+            // toolStrip4
             // 
-            this.SaveBetFileTool.Name = "SaveBetFileTool";
-            this.SaveBetFileTool.Size = new System.Drawing.Size(180, 22);
-            this.SaveBetFileTool.Text = "В файл";
-            // 
-            // SaveBetTelegramTool
-            // 
-            this.SaveBetTelegramTool.Name = "SaveBetTelegramTool";
-            this.SaveBetTelegramTool.Size = new System.Drawing.Size(180, 22);
-            this.SaveBetTelegramTool.Text = "В телеграмм";
+            this.toolStrip4.Name = "toolStrip4";
+            this.toolStrip4.Size = new System.Drawing.Size(177, 6);
             // 
             // MainForm
             // 
@@ -271,6 +286,8 @@ namespace BetMaker
         private System.Windows.Forms.ToolStripSeparator ToolStrip2;
         private System.Windows.Forms.ToolStripMenuItem SaveBetFileTool;
         private System.Windows.Forms.ToolStripMenuItem SaveBetTelegramTool;
+        private System.Windows.Forms.ToolStripMenuItem SettingsTableTool;
+        private System.Windows.Forms.ToolStripSeparator toolStrip4;
     }
 }
 
