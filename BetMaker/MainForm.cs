@@ -53,7 +53,15 @@ namespace BetMaker
             SaveBetTelegramTool.Click += (sender, args) => SaveBetTelegram();
 
             SettingsTableTool.Click += (sender, args) => UpdateSettings();
+            TeamTool.Click += (sender, args) => UpdateTeams();
 
+        }
+
+        private void UpdateTeams()
+        {
+            TeamForm teamForm = new TeamForm();
+
+            teamForm.ShowDialog();
         }
 
         private void UpdateSettings()

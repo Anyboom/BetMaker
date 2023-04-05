@@ -48,12 +48,13 @@ namespace BetMaker
             this.SaveBetFileTool = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveBetTelegramTool = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip3 = new System.Windows.Forms.ToolStripSeparator();
-            this.UpdateTableTool = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsTableTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip4 = new System.Windows.Forms.ToolStripSeparator();
+            this.UpdateTableTool = new System.Windows.Forms.ToolStripMenuItem();
             this.StartRangeDateTime = new System.Windows.Forms.DateTimePicker();
             this.EndRangeDateTime = new System.Windows.Forms.DateTimePicker();
             this.RangeLabel = new System.Windows.Forms.Label();
-            this.toolStrip4 = new System.Windows.Forms.ToolStripSeparator();
+            this.TeamTool = new System.Windows.Forms.ToolStripMenuItem();
             this.MainGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainGrid)).BeginInit();
             this.MainContextMenu.SuspendLayout();
@@ -103,7 +104,7 @@ namespace BetMaker
             this.toolStrip4,
             this.UpdateTableTool});
             this.MainContextMenu.Name = "MainContextMenu";
-            this.MainContextMenu.Size = new System.Drawing.Size(181, 104);
+            this.MainContextMenu.Size = new System.Drawing.Size(177, 82);
             // 
             // BetTool
             // 
@@ -115,7 +116,7 @@ namespace BetMaker
             this.ToolStrip2,
             this.SaveBetTool});
             this.BetTool.Name = "BetTool";
-            this.BetTool.Size = new System.Drawing.Size(180, 22);
+            this.BetTool.Size = new System.Drawing.Size(176, 22);
             this.BetTool.Text = "Ставка";
             // 
             // AddBetTool
@@ -195,19 +196,26 @@ namespace BetMaker
             // toolStrip3
             // 
             this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(177, 6);
+            this.toolStrip3.Size = new System.Drawing.Size(173, 6);
+            // 
+            // SettingsTableTool
+            // 
+            this.SettingsTableTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TeamTool});
+            this.SettingsTableTool.Name = "SettingsTableTool";
+            this.SettingsTableTool.Size = new System.Drawing.Size(176, 22);
+            this.SettingsTableTool.Text = "Настройки";
+            // 
+            // toolStrip4
+            // 
+            this.toolStrip4.Name = "toolStrip4";
+            this.toolStrip4.Size = new System.Drawing.Size(173, 6);
             // 
             // UpdateTableTool
             // 
             this.UpdateTableTool.Name = "UpdateTableTool";
-            this.UpdateTableTool.Size = new System.Drawing.Size(180, 22);
+            this.UpdateTableTool.Size = new System.Drawing.Size(176, 22);
             this.UpdateTableTool.Text = "Обновить таблицу";
-            // 
-            // SettingsTableTool
-            // 
-            this.SettingsTableTool.Name = "SettingsTableTool";
-            this.SettingsTableTool.Size = new System.Drawing.Size(180, 22);
-            this.SettingsTableTool.Text = "Настройки";
             // 
             // StartRangeDateTime
             // 
@@ -238,10 +246,11 @@ namespace BetMaker
             this.RangeLabel.TabIndex = 5;
             this.RangeLabel.Text = "Диапазон:";
             // 
-            // toolStrip4
+            // TeamSettingsTool
             // 
-            this.toolStrip4.Name = "toolStrip4";
-            this.toolStrip4.Size = new System.Drawing.Size(177, 6);
+            this.TeamTool.Name = "TeamTool";
+            this.TeamTool.Size = new System.Drawing.Size(180, 22);
+            this.TeamTool.Text = "Команды";
             // 
             // MainForm
             // 
@@ -288,6 +297,7 @@ namespace BetMaker
         private System.Windows.Forms.ToolStripMenuItem SaveBetTelegramTool;
         private System.Windows.Forms.ToolStripMenuItem SettingsTableTool;
         private System.Windows.Forms.ToolStripSeparator toolStrip4;
+        private System.Windows.Forms.ToolStripMenuItem TeamTool;
     }
 }
 
