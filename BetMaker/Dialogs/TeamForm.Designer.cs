@@ -34,9 +34,10 @@ namespace BetMaker.Dialogs
             this.MainList = new System.Windows.Forms.ListBox();
             this.ListContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.AddTeamTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddTeamFileTool = new System.Windows.Forms.ToolStripMenuItem();
             this.RemoveTeamTool = new System.Windows.Forms.ToolStripMenuItem();
             this.EditTeamTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddTeamFileTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateListTool = new System.Windows.Forms.ToolStripMenuItem();
             this.MainGroup.SuspendLayout();
             this.ListContextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -66,9 +67,10 @@ namespace BetMaker.Dialogs
             this.ListContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddTeamTool,
             this.RemoveTeamTool,
-            this.EditTeamTool});
+            this.EditTeamTool,
+            this.UpdateListTool});
             this.ListContextMenu.Name = "ListContextMenu";
-            this.ListContextMenu.Size = new System.Drawing.Size(181, 92);
+            this.ListContextMenu.Size = new System.Drawing.Size(181, 114);
             // 
             // AddTeamTool
             // 
@@ -77,6 +79,12 @@ namespace BetMaker.Dialogs
             this.AddTeamTool.Name = "AddTeamTool";
             this.AddTeamTool.Size = new System.Drawing.Size(180, 22);
             this.AddTeamTool.Text = "Добавить";
+            // 
+            // AddTeamFileTool
+            // 
+            this.AddTeamFileTool.Name = "AddTeamFileTool";
+            this.AddTeamFileTool.Size = new System.Drawing.Size(126, 22);
+            this.AddTeamFileTool.Text = "Из файла";
             // 
             // RemoveTeamTool
             // 
@@ -90,11 +98,11 @@ namespace BetMaker.Dialogs
             this.EditTeamTool.Size = new System.Drawing.Size(180, 22);
             this.EditTeamTool.Text = "Редактировать";
             // 
-            // AddTeamFileTool
+            // UpdateListTool
             // 
-            this.AddTeamFileTool.Name = "AddTeamFileTool";
-            this.AddTeamFileTool.Size = new System.Drawing.Size(180, 22);
-            this.AddTeamFileTool.Text = "Из файла";
+            this.UpdateListTool.Name = "UpdateListTool";
+            this.UpdateListTool.Size = new System.Drawing.Size(180, 22);
+            this.UpdateListTool.Text = "Обновить";
             // 
             // TeamForm
             // 
@@ -123,5 +131,6 @@ namespace BetMaker.Dialogs
         private System.Windows.Forms.ToolStripMenuItem RemoveTeamTool;
         private System.Windows.Forms.ToolStripMenuItem EditTeamTool;
         private System.Windows.Forms.ToolStripMenuItem AddTeamFileTool;
+        private System.Windows.Forms.ToolStripMenuItem UpdateListTool;
     }
 }

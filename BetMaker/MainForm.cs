@@ -55,6 +55,7 @@ namespace BetMaker
             SettingsTableTool.Click += (sender, args) => UpdateSettings();
             TeamTool.Click += (sender, args) => UpdateTeams();
 
+            this.Load += (sender, args) => UpdateTable();
         }
 
         private void UpdateTeams()

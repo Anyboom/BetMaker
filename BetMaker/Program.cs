@@ -16,16 +16,6 @@ namespace BetMaker
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (Settings.KeyExists("Token", "Telegram") == false)
-            {
-                Settings.Write("Token", string.Empty, "Telegram");
-            }
-
-            if (Settings.KeyExists("NameChannel", "Telegram") == false)
-            {
-                Settings.Write("NameChannel", string.Empty, "Telegram");
-            }
-
             Application.Run(new MainForm());
         }
     }
