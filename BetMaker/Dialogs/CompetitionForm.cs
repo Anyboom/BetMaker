@@ -14,57 +14,57 @@ using LiteDB;
 
 namespace BetMaker.Dialogs
 {
-    public partial class TeamForm : Form
+    public partial class CompetitionForm : Form
     {
-        public TeamForm()
+        public CompetitionForm()
         {
             InitializeComponent();
 
             this.Load += (sender, args) => UpdateList();
             UpdateListTool.Click += (sender, args) => UpdateList();
 
-            AddTeamTool.Click += (sender, args) => AddTeam();
-            AddTeamFileTool.Click += (sender, args) => AddTeamFile();
-            RemoveTeamTool.Click += (sender, args) => RemoveTeam();
-            EditTeamTool.Click += (sender, args) => EditTeam();
+            AddCompetitionTool.Click += (sender, args) => AddCompetition();
+            AddCompetitionFileTool.Click += (sender, args) => AddCompetitionFile();
+            RemoveCompetitionTool.Click += (sender, args) => RemoveCompetition();
+            EditCompetitionTool.Click += (sender, args) => EditCompetition();
         }
 
-        private void EditTeam()
+        private void EditCompetition()
         {
-            string name = MessageService.InputBox("Введите новое имя для команды:");
+            string name = MessageService.InputBox("Введите новое имя для соревнования:");
 
             if (string.IsNullOrEmpty(name))
             {
                 return;
             }
 
-            Team teamForEdit = MainList.SelectedItem as Team;
+            Competition competitionForEdit = MainList.SelectedItem as Competition;
 
-            teamForEdit.Name = name;
+            competitionForEdit.Name = name;
 
             using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
 
-            var teamDb = db.GetCollection<Team>("Team");
+            var teamDb = db.GetCollection<Competition>("Competition");
 
-            teamDb.Update(teamForEdit);
+            teamDb.Update(competitionForEdit);
         }
 
-        private void RemoveTeam()
+        private void RemoveCompetition()
         {
-            Team teamForRemove = MainList.SelectedItem as Team;
+            Competition competitionForRemove = MainList.SelectedItem as Competition;
 
-            DialogResult result = MessageService.ShowQuestion($"Вы точно собираетесь удалить команду {teamForRemove.Name} ?", MessageBoxButtons.YesNo);
+            DialogResult result = MessageService.ShowQuestion($"Вы точно собираетесь удалить соревнование {competitionForRemove.Name} ?", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
 
                 using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
 
-                db.GetCollection<Team>("Team").Delete(teamForRemove.Id);
+                db.GetCollection<Competition>("Competition").Delete(competitionForRemove.Id);
             }
         }
 
-        private void AddTeamFile()
+        private void AddCompetitionFile()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
@@ -80,38 +80,38 @@ namespace BetMaker.Dialogs
 
                 using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
 
-                var teamDB = db.GetCollection<Team>("Team");
+                var competitionDB = db.GetCollection<Competition>("Competition");
 
                 foreach (var name in teams)
                 {
-                    teamDB.Insert(new Team() { Name = name });
+                    competitionDB.Insert(new Competition() { Name = name });
                 }
             }
         }
 
-        private void AddTeam()
+        private void AddCompetition()
         {
-            string name = MessageService.InputBox("Введите название команды:");
+            string name = MessageService.InputBox("Введите название соревнования:");
 
             if (string.IsNullOrEmpty(name))
             {
                 return;
             }
 
-            Team newTeam = new Team();
+            Competition newCompetition = new Competition();
 
-            newTeam.Name = name;
+            newCompetition.Name = name;
 
             using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
 
-            db.GetCollection<Team>("Team").Insert(newTeam);
+            db.GetCollection<Competition>("Competition").Insert(newCompetition);
         }
 
         private void UpdateList()
         {
             using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
 
-            MainList.DataSource = db.GetCollection<Team>("Team").FindAll().ToList();
+            MainList.DataSource = db.GetCollection<Competition>("Competition").FindAll().ToList();
             MainList.DisplayMember = "Name";
             MainList.ValueMember = "Id";
         }

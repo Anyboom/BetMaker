@@ -49,12 +49,13 @@ namespace BetMaker
             this.SaveBetTelegramTool = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip3 = new System.Windows.Forms.ToolStripSeparator();
             this.SettingsTableTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.TeamTool = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip4 = new System.Windows.Forms.ToolStripSeparator();
             this.UpdateTableTool = new System.Windows.Forms.ToolStripMenuItem();
             this.StartRangeDateTime = new System.Windows.Forms.DateTimePicker();
             this.EndRangeDateTime = new System.Windows.Forms.DateTimePicker();
             this.RangeLabel = new System.Windows.Forms.Label();
-            this.TeamTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.CompetitionTool = new System.Windows.Forms.ToolStripMenuItem();
             this.MainGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainGrid)).BeginInit();
             this.MainContextMenu.SuspendLayout();
@@ -201,10 +202,17 @@ namespace BetMaker
             // SettingsTableTool
             // 
             this.SettingsTableTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TeamTool});
+            this.TeamTool,
+            this.CompetitionTool});
             this.SettingsTableTool.Name = "SettingsTableTool";
             this.SettingsTableTool.Size = new System.Drawing.Size(176, 22);
             this.SettingsTableTool.Text = "Настройки";
+            // 
+            // TeamTool
+            // 
+            this.TeamTool.Name = "TeamTool";
+            this.TeamTool.Size = new System.Drawing.Size(180, 22);
+            this.TeamTool.Text = "Команды";
             // 
             // toolStrip4
             // 
@@ -246,11 +254,11 @@ namespace BetMaker
             this.RangeLabel.TabIndex = 5;
             this.RangeLabel.Text = "Диапазон:";
             // 
-            // TeamSettingsTool
+            // CompetitionTool
             // 
-            this.TeamTool.Name = "TeamTool";
-            this.TeamTool.Size = new System.Drawing.Size(180, 22);
-            this.TeamTool.Text = "Команды";
+            this.CompetitionTool.Name = "CompetitionTool";
+            this.CompetitionTool.Size = new System.Drawing.Size(180, 22);
+            this.CompetitionTool.Text = "Соревнования";
             // 
             // MainForm
             // 
@@ -298,6 +306,7 @@ namespace BetMaker
         private System.Windows.Forms.ToolStripMenuItem SettingsTableTool;
         private System.Windows.Forms.ToolStripSeparator toolStrip4;
         private System.Windows.Forms.ToolStripMenuItem TeamTool;
+        private System.Windows.Forms.ToolStripMenuItem CompetitionTool;
     }
 }
 

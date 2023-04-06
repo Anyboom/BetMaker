@@ -1,7 +1,7 @@
 ﻿
 namespace BetMaker.Dialogs
 {
-    partial class TeamForm
+    partial class CompetitionForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,10 +33,10 @@ namespace BetMaker.Dialogs
             this.MainGroup = new System.Windows.Forms.GroupBox();
             this.MainList = new System.Windows.Forms.ListBox();
             this.ListContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.AddTeamTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddTeamFileTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.RemoveTeamTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.EditTeamTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddCompetitionTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddCompetitionFileTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.RemoveCompetitionTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditCompetitionTool = new System.Windows.Forms.ToolStripMenuItem();
             this.UpdateListTool = new System.Windows.Forms.ToolStripMenuItem();
             this.Separator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MainGroup.SuspendLayout();
@@ -66,52 +66,52 @@ namespace BetMaker.Dialogs
             // ListContextMenu
             // 
             this.ListContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddTeamTool,
-            this.RemoveTeamTool,
-            this.EditTeamTool,
+            this.AddCompetitionTool,
+            this.RemoveCompetitionTool,
+            this.EditCompetitionTool,
             this.Separator1,
             this.UpdateListTool});
             this.ListContextMenu.Name = "ListContextMenu";
-            this.ListContextMenu.Size = new System.Drawing.Size(155, 98);
+            this.ListContextMenu.Size = new System.Drawing.Size(181, 120);
             // 
-            // AddTeamTool
+            // AddCompetitionTool
             // 
-            this.AddTeamTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddTeamFileTool});
-            this.AddTeamTool.Name = "AddTeamTool";
-            this.AddTeamTool.Size = new System.Drawing.Size(154, 22);
-            this.AddTeamTool.Text = "Добавить";
+            this.AddCompetitionTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddCompetitionFileTool});
+            this.AddCompetitionTool.Name = "AddCompetitionTool";
+            this.AddCompetitionTool.Size = new System.Drawing.Size(180, 22);
+            this.AddCompetitionTool.Text = "Добавить";
             // 
-            // AddTeamFileTool
+            // AddCompetitionFileTool
             // 
-            this.AddTeamFileTool.Name = "AddTeamFileTool";
-            this.AddTeamFileTool.Size = new System.Drawing.Size(126, 22);
-            this.AddTeamFileTool.Text = "Из файла";
+            this.AddCompetitionFileTool.Name = "AddCompetitionFileTool";
+            this.AddCompetitionFileTool.Size = new System.Drawing.Size(180, 22);
+            this.AddCompetitionFileTool.Text = "Из файла";
             // 
-            // RemoveTeamTool
+            // RemoveCompetitionTool
             // 
-            this.RemoveTeamTool.Name = "RemoveTeamTool";
-            this.RemoveTeamTool.Size = new System.Drawing.Size(154, 22);
-            this.RemoveTeamTool.Text = "Удалить";
+            this.RemoveCompetitionTool.Name = "RemoveCompetitionTool";
+            this.RemoveCompetitionTool.Size = new System.Drawing.Size(180, 22);
+            this.RemoveCompetitionTool.Text = "Удалить";
             // 
-            // EditTeamTool
+            // EditCompetitionTool
             // 
-            this.EditTeamTool.Name = "EditTeamTool";
-            this.EditTeamTool.Size = new System.Drawing.Size(154, 22);
-            this.EditTeamTool.Text = "Редактировать";
+            this.EditCompetitionTool.Name = "EditCompetitionTool";
+            this.EditCompetitionTool.Size = new System.Drawing.Size(180, 22);
+            this.EditCompetitionTool.Text = "Редактировать";
             // 
             // UpdateListTool
             // 
             this.UpdateListTool.Name = "UpdateListTool";
-            this.UpdateListTool.Size = new System.Drawing.Size(154, 22);
+            this.UpdateListTool.Size = new System.Drawing.Size(180, 22);
             this.UpdateListTool.Text = "Обновить";
             // 
             // Separator1
             // 
             this.Separator1.Name = "Separator1";
-            this.Separator1.Size = new System.Drawing.Size(151, 6);
+            this.Separator1.Size = new System.Drawing.Size(177, 6);
             // 
-            // TeamForm
+            // CompetitionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -120,9 +120,9 @@ namespace BetMaker.Dialogs
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "TeamForm";
+            this.Name = "CompetitionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Команды";
+            this.Text = "Соревнования";
             this.MainGroup.ResumeLayout(false);
             this.ListContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -134,10 +134,10 @@ namespace BetMaker.Dialogs
         private System.Windows.Forms.GroupBox MainGroup;
         private System.Windows.Forms.ListBox MainList;
         private System.Windows.Forms.ContextMenuStrip ListContextMenu;
-        private System.Windows.Forms.ToolStripMenuItem AddTeamTool;
-        private System.Windows.Forms.ToolStripMenuItem RemoveTeamTool;
-        private System.Windows.Forms.ToolStripMenuItem EditTeamTool;
-        private System.Windows.Forms.ToolStripMenuItem AddTeamFileTool;
+        private System.Windows.Forms.ToolStripMenuItem AddCompetitionTool;
+        private System.Windows.Forms.ToolStripMenuItem RemoveCompetitionTool;
+        private System.Windows.Forms.ToolStripMenuItem EditCompetitionTool;
+        private System.Windows.Forms.ToolStripMenuItem AddCompetitionFileTool;
         private System.Windows.Forms.ToolStripMenuItem UpdateListTool;
         private System.Windows.Forms.ToolStripSeparator Separator1;
     }

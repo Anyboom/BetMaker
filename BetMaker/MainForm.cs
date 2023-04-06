@@ -54,8 +54,16 @@ namespace BetMaker
 
             SettingsTableTool.Click += (sender, args) => UpdateSettings();
             TeamTool.Click += (sender, args) => UpdateTeams();
+            CompetitionTool.Click += (sender, args) => UpdateCompetition();
 
             this.Load += (sender, args) => UpdateTable();
+        }
+
+        private void UpdateCompetition()
+        {
+            CompetitionForm competitionForm = new CompetitionForm();
+
+            competitionForm.ShowDialog();
         }
 
         private void UpdateTeams()
