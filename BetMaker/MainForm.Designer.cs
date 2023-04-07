@@ -50,12 +50,12 @@ namespace BetMaker
             this.toolStrip3 = new System.Windows.Forms.ToolStripSeparator();
             this.SettingsTableTool = new System.Windows.Forms.ToolStripMenuItem();
             this.TeamTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.CompetitionTool = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip4 = new System.Windows.Forms.ToolStripSeparator();
             this.UpdateTableTool = new System.Windows.Forms.ToolStripMenuItem();
             this.StartRangeDateTime = new System.Windows.Forms.DateTimePicker();
             this.EndRangeDateTime = new System.Windows.Forms.DateTimePicker();
             this.RangeLabel = new System.Windows.Forms.Label();
-            this.CompetitionTool = new System.Windows.Forms.ToolStripMenuItem();
             this.MainGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainGrid)).BeginInit();
             this.MainContextMenu.SuspendLayout();
@@ -93,6 +93,7 @@ namespace BetMaker
             this.MainGrid.RowTemplate.Height = 25;
             this.MainGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.MainGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.MainGrid.ShowCellToolTips = false;
             this.MainGrid.Size = new System.Drawing.Size(734, 370);
             this.MainGrid.TabIndex = 0;
             // 
@@ -211,8 +212,14 @@ namespace BetMaker
             // TeamTool
             // 
             this.TeamTool.Name = "TeamTool";
-            this.TeamTool.Size = new System.Drawing.Size(180, 22);
+            this.TeamTool.Size = new System.Drawing.Size(154, 22);
             this.TeamTool.Text = "Команды";
+            // 
+            // CompetitionTool
+            // 
+            this.CompetitionTool.Name = "CompetitionTool";
+            this.CompetitionTool.Size = new System.Drawing.Size(154, 22);
+            this.CompetitionTool.Text = "Соревнования";
             // 
             // toolStrip4
             // 
@@ -253,12 +260,6 @@ namespace BetMaker
             this.RangeLabel.Size = new System.Drawing.Size(63, 15);
             this.RangeLabel.TabIndex = 5;
             this.RangeLabel.Text = "Диапазон:";
-            // 
-            // CompetitionTool
-            // 
-            this.CompetitionTool.Name = "CompetitionTool";
-            this.CompetitionTool.Size = new System.Drawing.Size(180, 22);
-            this.CompetitionTool.Text = "Соревнования";
             // 
             // MainForm
             // 

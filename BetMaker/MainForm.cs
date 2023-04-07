@@ -4,8 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BetMaker.Dialogs;
 using BetMaker.Models;
@@ -82,12 +80,7 @@ namespace BetMaker
 
         private void SaveBetTelegram()
         {
-            if (InternetService.CheckConnection() == false)
-            {
-                MessageService.ShowWarn("Проверьте интернет соединение.");
-                return;
-            }
-            
+
             List<int> ids = MainGrid.SelectedRows.Cast<DataGridViewRow>().Select(x => Convert.ToInt32(x.Cells[0].Value)).ToList();
 
             if (ids.Count == 0)

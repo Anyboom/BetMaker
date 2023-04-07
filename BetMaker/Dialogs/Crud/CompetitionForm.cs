@@ -1,24 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using BetMaker.Models;
 using BetMaker.Services;
+
 using LiteDB;
 
 namespace BetMaker.Dialogs
 {
     public partial class CompetitionForm : Form
     {
+        private DataTable mainTable;
+
         public CompetitionForm()
         {
             InitializeComponent();
+
+            mainTable = new DataTable();
+
+            mainTable.Columns.Add("ИД", typeof(int));
+            mainTable.Columns.Add("НАЗВАНИЕ", typeof(string));
 
             this.Load += (sender, args) => UpdateList();
             UpdateListTool.Click += (sender, args) => UpdateList();
@@ -27,10 +32,21 @@ namespace BetMaker.Dialogs
             AddCompetitionFileTool.Click += (sender, args) => AddCompetitionFile();
             RemoveCompetitionTool.Click += (sender, args) => RemoveCompetition();
             EditCompetitionTool.Click += (sender, args) => EditCompetition();
+
+            MainGrid.DataSource = mainTable;
         }
 
         private void EditCompetition()
         {
+            List<int> ids = MainGrid.SelectedRows.Cast<DataGridViewRow>().Select(x => Convert.ToInt32(x.Cells[0].Value))
+                .ToList();
+            List<int> idsCells = MainGrid.SelectedRows.Cast<DataGridViewRow>().Select(x => Convert.ToInt32(x.Index)).ToList();
+
+            if (ids.Count == 0 || ids.Count > 1)
+            {
+                return;
+            }
+
             string name = MessageService.InputBox("Введите новое имя для соревнования:");
 
             if (string.IsNullOrEmpty(name))
@@ -38,29 +54,39 @@ namespace BetMaker.Dialogs
                 return;
             }
 
-            Competition competitionForEdit = MainList.SelectedItem as Competition;
+            using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
+            var competitionDb = db.GetCollection<Competition>("Competition");
+
+            Competition competitionForEdit = competitionDb.FindById(ids.First());
 
             competitionForEdit.Name = name;
 
-            using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
+            competitionDb.Update(competitionForEdit);
 
-            var teamDb = db.GetCollection<Competition>("Competition");
-
-            teamDb.Update(competitionForEdit);
+            mainTable.Rows[idsCells.First()][1] = name;
         }
 
         private void RemoveCompetition()
         {
-            Competition competitionForRemove = MainList.SelectedItem as Competition;
+            List<int> ids = MainGrid.SelectedRows.Cast<DataGridViewRow>().Select(x => Convert.ToInt32(x.Cells[0].Value))
+                .ToList();
+            List<int> idsCells = MainGrid.SelectedRows.Cast<DataGridViewRow>().Select(x => Convert.ToInt32(x.Index)).ToList();
 
-            DialogResult result = MessageService.ShowQuestion($"Вы точно собираетесь удалить соревнование {competitionForRemove.Name} ?", MessageBoxButtons.YesNo);
+            if (ids.Count == 0)
+            {
+                return;
+            }
+
+            DialogResult result = MessageService.ShowQuestion($"Вы точно собираетесь удалить соревнование в количестве {ids.Count} ?", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
 
                 using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
+                var competitionDb = db.GetCollection<Competition>("Competition");
 
-                db.GetCollection<Competition>("Competition").Delete(competitionForRemove.Id);
+                competitionDb.DeleteMany(x => ids.Contains(x.Id));
+                idsCells.ForEach(x => mainTable.Rows.RemoveAt(x));
             }
         }
 
@@ -84,14 +110,15 @@ namespace BetMaker.Dialogs
 
                 foreach (var name in teams)
                 {
-                    competitionDB.Insert(new Competition() { Name = name });
+                    int id = competitionDB.Insert(new Competition() { Name = name });
+                    mainTable.Rows.Add(id, name);
                 }
             }
         }
 
         private void AddCompetition()
         {
-            string name = MessageService.InputBox("Введите название соревнования:");
+            string name = MessageService.InputBox("Введите название соревнования:", "Новое название для соревнования");
 
             if (string.IsNullOrEmpty(name))
             {
@@ -104,16 +131,21 @@ namespace BetMaker.Dialogs
 
             using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
 
-            db.GetCollection<Competition>("Competition").Insert(newCompetition);
+            int id = db.GetCollection<Competition>("Competition").Insert(newCompetition);
+
+            mainTable.Rows.Add(id, name);
         }
 
         private void UpdateList()
         {
             using LiteDatabase db = new LiteDatabase(Settings.PathDatabase);
 
-            MainList.DataSource = db.GetCollection<Competition>("Competition").FindAll().ToList();
-            MainList.DisplayMember = "Name";
-            MainList.ValueMember = "Id";
+            mainTable.Clear();
+
+            foreach (Competition competition in db.GetCollection<Competition>("Competition").FindAll())
+            {
+                mainTable.Rows.Add(competition.Id, competition.Name);
+            }
         }
     }
 }

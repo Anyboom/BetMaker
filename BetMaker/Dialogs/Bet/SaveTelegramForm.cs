@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BetMaker.Models;
 using BetMaker.Services;
@@ -48,6 +44,12 @@ namespace BetMaker.Dialogs
         }
         private async void SaveBet()
         {
+            if (InternetService.CheckConnection() == false)
+            {
+                MessageService.ShowWarn("Проверьте интернет соединение.");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(PathTemplateTextBox.Text) || string.IsNullOrWhiteSpace(TemplateTextBox.Text))
             {
                 MessageService.ShowWarn("Для сохранения требуется шаблон.");
@@ -89,7 +91,16 @@ namespace BetMaker.Dialogs
                 result = result.Replace("{Result}", statusBet);
                 result = result.Replace("{StartAt}", bet.StartAt.ToString("HH:mm | d MMM yyyy"));
 
-                await client.SendTextMessageAsync(Settings.Read("NameChannel", "Telegram"), result, ParseMode.Markdown);
+                try
+                {
+                    await client.SendTextMessageAsync(Settings.Read("NameChannel", "Telegram"), result, ParseMode.Markdown);
+
+                }
+                catch
+                {
+                    MessageService.ShowWarn("Проверьте правильность токена и название канала.");
+                    return;
+                }
 
                 DialogResult = DialogResult.OK;
 

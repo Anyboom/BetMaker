@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using BetMaker.Models;
 using BetMaker.Services;
 using LiteDB;
-using Telegram.Bot;
-using Telegram.Bot.Types.Enums;
 
 namespace BetMaker.Dialogs
 {
