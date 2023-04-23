@@ -71,7 +71,7 @@ namespace BetMaker.Dialogs
             this.MainGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MainGrid.ContextMenuStrip = this.MainMenu;
             this.MainGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.MainGrid.Location = new System.Drawing.Point(13, 18);
+            this.MainGrid.Location = new System.Drawing.Point(13, 24);
             this.MainGrid.Name = "MainGrid";
             this.MainGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.MainGrid.RowTemplate.Height = 25;

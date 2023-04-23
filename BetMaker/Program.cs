@@ -22,7 +22,7 @@ namespace BetMaker
                 Directory.CreateDirectory(dirBackup);
             }
 
-            if (File.Exists(pathBackup) == false)
+            if (File.Exists(pathBackup) == false && File.Exists(Settings.PathDatabase))
             {
                 File.Copy(Settings.PathDatabase, pathBackup);
             }

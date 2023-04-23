@@ -35,8 +35,10 @@ namespace BetMaker.Dialogs
             this.MainGroup = new System.Windows.Forms.GroupBox();
             this.MarkersTemplateLinkLabel = new System.Windows.Forms.LinkLabel();
             this.OpenPathButton = new System.Windows.Forms.Button();
-            this.PathTemplateTextBox = new System.Windows.Forms.TextBox();
             this.PathTemplateLabel = new System.Windows.Forms.Label();
+            this.PathTemplateTextBox = new System.Windows.Forms.TextBox();
+            this.ManyFileTextBox = new System.Windows.Forms.TextBox();
+            this.ManyFilesCheck = new System.Windows.Forms.CheckBox();
             this.MainGroup.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,12 +57,12 @@ namespace BetMaker.Dialogs
             this.TemplateTextBox.Multiline = true;
             this.TemplateTextBox.Name = "TemplateTextBox";
             this.TemplateTextBox.ReadOnly = true;
-            this.TemplateTextBox.Size = new System.Drawing.Size(298, 279);
+            this.TemplateTextBox.Size = new System.Drawing.Size(298, 206);
             this.TemplateTextBox.TabIndex = 1;
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(236, 373);
+            this.SaveButton.Location = new System.Drawing.Point(237, 354);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(75, 23);
             this.SaveButton.TabIndex = 2;
@@ -69,6 +71,8 @@ namespace BetMaker.Dialogs
             // 
             // MainGroup
             // 
+            this.MainGroup.Controls.Add(this.ManyFilesCheck);
+            this.MainGroup.Controls.Add(this.ManyFileTextBox);
             this.MainGroup.Controls.Add(this.MarkersTemplateLinkLabel);
             this.MainGroup.Controls.Add(this.SaveButton);
             this.MainGroup.Controls.Add(this.OpenPathButton);
@@ -79,14 +83,14 @@ namespace BetMaker.Dialogs
             this.MainGroup.Location = new System.Drawing.Point(12, 12);
             this.MainGroup.Name = "MainGroup";
             this.MainGroup.Padding = new System.Windows.Forms.Padding(10);
-            this.MainGroup.Size = new System.Drawing.Size(325, 409);
+            this.MainGroup.Size = new System.Drawing.Size(325, 387);
             this.MainGroup.TabIndex = 1;
             this.MainGroup.TabStop = false;
             // 
             // MarkersTemplateLinkLabel
             // 
             this.MarkersTemplateLinkLabel.AutoSize = true;
-            this.MarkersTemplateLinkLabel.Location = new System.Drawing.Point(13, 377);
+            this.MarkersTemplateLinkLabel.Location = new System.Drawing.Point(13, 358);
             this.MarkersTemplateLinkLabel.Name = "MarkersTemplateLinkLabel";
             this.MarkersTemplateLinkLabel.Size = new System.Drawing.Size(135, 15);
             this.MarkersTemplateLinkLabel.TabIndex = 6;
@@ -102,15 +106,6 @@ namespace BetMaker.Dialogs
             this.OpenPathButton.Text = "О";
             this.OpenPathButton.UseVisualStyleBackColor = true;
             // 
-            // PathTemplateTextBox
-            // 
-            this.PathTemplateTextBox.Enabled = false;
-            this.PathTemplateTextBox.Location = new System.Drawing.Point(13, 44);
-            this.PathTemplateTextBox.Name = "PathTemplateTextBox";
-            this.PathTemplateTextBox.ReadOnly = true;
-            this.PathTemplateTextBox.Size = new System.Drawing.Size(275, 23);
-            this.PathTemplateTextBox.TabIndex = 4;
-            // 
             // PathTemplateLabel
             // 
             this.PathTemplateLabel.AutoSize = true;
@@ -120,11 +115,38 @@ namespace BetMaker.Dialogs
             this.PathTemplateLabel.TabIndex = 3;
             this.PathTemplateLabel.Text = "Путь к шаблону:";
             // 
+            // PathTemplateTextBox
+            // 
+            this.PathTemplateTextBox.Enabled = false;
+            this.PathTemplateTextBox.Location = new System.Drawing.Point(13, 44);
+            this.PathTemplateTextBox.Name = "PathTemplateTextBox";
+            this.PathTemplateTextBox.ReadOnly = true;
+            this.PathTemplateTextBox.Size = new System.Drawing.Size(275, 23);
+            this.PathTemplateTextBox.TabIndex = 4;
+            // 
+            // ManyFileTextBox
+            // 
+            this.ManyFileTextBox.Location = new System.Drawing.Point(13, 325);
+            this.ManyFileTextBox.Name = "ManyFileTextBox";
+            this.ManyFileTextBox.Size = new System.Drawing.Size(298, 23);
+            this.ManyFileTextBox.TabIndex = 9;
+            this.ManyFileTextBox.Text = "{CreatedAt}-{HomeTeam}-{GuestTeam}";
+            // 
+            // ManyFilesCheck
+            // 
+            this.ManyFilesCheck.AutoSize = true;
+            this.ManyFilesCheck.Location = new System.Drawing.Point(13, 300);
+            this.ManyFilesCheck.Name = "ManyFilesCheck";
+            this.ManyFilesCheck.Size = new System.Drawing.Size(227, 19);
+            this.ManyFilesCheck.TabIndex = 10;
+            this.ManyFilesCheck.Text = "В разные файлы: ( шаблон файлов )";
+            this.ManyFilesCheck.UseVisualStyleBackColor = true;
+            // 
             // SaveFileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 433);
+            this.ClientSize = new System.Drawing.Size(349, 411);
             this.Controls.Add(this.MainGroup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SaveFileForm";
@@ -143,8 +165,10 @@ namespace BetMaker.Dialogs
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.GroupBox MainGroup;
         private System.Windows.Forms.Button OpenPathButton;
-        private System.Windows.Forms.TextBox PathTemplateTextBox;
         private System.Windows.Forms.Label PathTemplateLabel;
         private System.Windows.Forms.LinkLabel MarkersTemplateLinkLabel;
+        private System.Windows.Forms.CheckBox ManyFilesCheck;
+        private System.Windows.Forms.TextBox ManyFileTextBox;
+        private System.Windows.Forms.TextBox PathTemplateTextBox;
     }
 }

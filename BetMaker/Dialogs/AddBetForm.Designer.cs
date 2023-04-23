@@ -44,12 +44,19 @@ namespace BetMaker.Dialogs
             this.PrognosisLabel = new System.Windows.Forms.Label();
             this.GuestTeamLabel = new System.Windows.Forms.Label();
             this.HomeTeamLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.AuthorTextBox = new System.Windows.Forms.TextBox();
+            this.AuthorLabel = new System.Windows.Forms.Label();
             this.MainGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // MainGroup
             // 
+            this.MainGroup.Controls.Add(this.AuthorTextBox);
+            this.MainGroup.Controls.Add(this.AuthorLabel);
+            this.MainGroup.Controls.Add(this.pictureBox1);
             this.MainGroup.Controls.Add(this.MainButton);
             this.MainGroup.Controls.Add(this.GuestTeamTextBox);
             this.MainGroup.Controls.Add(this.HomeTeamTextBox);
@@ -67,13 +74,13 @@ namespace BetMaker.Dialogs
             this.MainGroup.Location = new System.Drawing.Point(12, 12);
             this.MainGroup.Name = "MainGroup";
             this.MainGroup.Padding = new System.Windows.Forms.Padding(10, 3, 10, 10);
-            this.MainGroup.Size = new System.Drawing.Size(211, 373);
+            this.MainGroup.Size = new System.Drawing.Size(211, 445);
             this.MainGroup.TabIndex = 0;
             this.MainGroup.TabStop = false;
             // 
             // MainButton
             // 
-            this.MainButton.Location = new System.Drawing.Point(123, 339);
+            this.MainButton.Location = new System.Drawing.Point(123, 409);
             this.MainButton.Name = "MainButton";
             this.MainButton.Size = new System.Drawing.Size(75, 23);
             this.MainButton.TabIndex = 7;
@@ -203,11 +210,40 @@ namespace BetMaker.Dialogs
             this.HomeTeamLabel.TabIndex = 0;
             this.HomeTeamLabel.Text = "Домашняя команда:";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 339);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(185, 3);
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
+            // AuthorTextBox
+            // 
+            this.AuthorTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.AuthorTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.AuthorTextBox.Location = new System.Drawing.Point(13, 370);
+            this.AuthorTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.AuthorTextBox.Name = "AuthorTextBox";
+            this.AuthorTextBox.Size = new System.Drawing.Size(185, 23);
+            this.AuthorTextBox.TabIndex = 17;
+            // 
+            // AuthorLabel
+            // 
+            this.AuthorLabel.AutoSize = true;
+            this.AuthorLabel.Location = new System.Drawing.Point(13, 352);
+            this.AuthorLabel.Name = "AuthorLabel";
+            this.AuthorLabel.Size = new System.Drawing.Size(43, 15);
+            this.AuthorLabel.TabIndex = 18;
+            this.AuthorLabel.Text = "Автор:";
+            // 
             // AddBetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(235, 397);
+            this.ClientSize = new System.Drawing.Size(235, 469);
             this.Controls.Add(this.MainGroup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -218,6 +254,7 @@ namespace BetMaker.Dialogs
             this.MainGroup.ResumeLayout(false);
             this.MainGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -239,5 +276,8 @@ namespace BetMaker.Dialogs
         private System.Windows.Forms.TextBox HomeTeamTextBox;
         private System.Windows.Forms.TextBox PrognosisTextBox;
         private System.Windows.Forms.Button MainButton;
+        private System.Windows.Forms.TextBox AuthorTextBox;
+        private System.Windows.Forms.Label AuthorLabel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

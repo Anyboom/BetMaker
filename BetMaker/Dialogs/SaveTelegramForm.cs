@@ -89,6 +89,7 @@ namespace BetMaker.Dialogs
                 result = result.Replace("{Competition}", bet.Competition.Name);
                 result = result.Replace("{Coefficient}", bet.Coefficient.ToString());
                 result = result.Replace("{Result}", statusBet);
+                result = result.Replace("{Author}", bet.Author);
                 result = result.Replace("{StartAt}", bet.StartAt.ToString("HH:mm | d MMM yyyy"));
 
                 try
@@ -119,6 +120,7 @@ namespace BetMaker.Dialogs
             stringHelp.AppendLine("{Coefficient} - коэффициент");
             stringHelp.AppendLine("{Result} - результат");
             stringHelp.AppendLine("{StartAt} - начало матча");
+            stringHelp.AppendLine("{Author} - автор ставки");
 
             MessageService.ShowInfo(stringHelp.ToString());
         }

@@ -5,6 +5,7 @@ namespace BetMaker.Models
     public class Bet
     {
         public int Id { get; set; }
+        public string Author { get; set; }
         public Team HomeTeam { get; set; }
         public Team GuestTeam { get; set; }
         public Prognosis Prognosis { get; set; }

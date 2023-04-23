@@ -44,7 +44,8 @@ namespace BetMaker.Dialogs
                 guestTeamResult = GuestTeamTextBox.Text,
                 competitionResult = CompetitionNameTextBox.Text,
                 prognosisResult = PrognosisTextBox.Text,
-                coefficientText = CoefficientTextBox.Text;
+                coefficientText = CoefficientTextBox.Text,
+                authorResult = AuthorTextBox.Text;
 
             DateTime startAtResult = StartAtDateTime.Value;
             float coefficientResult = default;
@@ -54,6 +55,11 @@ namespace BetMaker.Dialogs
             if (string.IsNullOrWhiteSpace(homeTeamResult))
             {
                 errors.AppendLine("[Домашняя команда]: Поле не может быть пустым.");
+            }
+
+            if (string.IsNullOrWhiteSpace(authorResult))
+            {
+                errors.AppendLine("[Автор]: Поле не может быть пустым.");
             }
 
             if (string.IsNullOrWhiteSpace(guestTeamResult))
@@ -153,6 +159,7 @@ namespace BetMaker.Dialogs
             NewBet.Coefficient = coefficientResult;
             NewBet.CreatedAt = DateTime.Now;
             NewBet.IsDeleted = false;
+            NewBet.Author = authorResult;
 
             NewBet.Id = db.GetCollection<Bet>("Bet").Insert(NewBet);
 

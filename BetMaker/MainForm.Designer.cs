@@ -124,19 +124,19 @@ namespace BetMaker
             // AddBetTool
             // 
             this.AddBetTool.Name = "AddBetTool";
-            this.AddBetTool.Size = new System.Drawing.Size(165, 22);
+            this.AddBetTool.Size = new System.Drawing.Size(180, 22);
             this.AddBetTool.Text = "Добавить";
             // 
             // RemoveBetTool
             // 
             this.RemoveBetTool.Name = "RemoveBetTool";
-            this.RemoveBetTool.Size = new System.Drawing.Size(165, 22);
+            this.RemoveBetTool.Size = new System.Drawing.Size(180, 22);
             this.RemoveBetTool.Text = "Удалить";
             // 
             // ToolStrip1
             // 
             this.ToolStrip1.Name = "ToolStrip1";
-            this.ToolStrip1.Size = new System.Drawing.Size(162, 6);
+            this.ToolStrip1.Size = new System.Drawing.Size(177, 6);
             // 
             // ChangeBetStatusTool
             // 
@@ -145,34 +145,34 @@ namespace BetMaker
             this.LoseStatusTool,
             this.ReturnStatusTool});
             this.ChangeBetStatusTool.Name = "ChangeBetStatusTool";
-            this.ChangeBetStatusTool.Size = new System.Drawing.Size(165, 22);
+            this.ChangeBetStatusTool.Size = new System.Drawing.Size(180, 22);
             this.ChangeBetStatusTool.Text = "Изменить статус";
             // 
             // WinStatusTool
             // 
             this.WinStatusTool.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(232)))), ((int)(((byte)(187)))));
             this.WinStatusTool.Name = "WinStatusTool";
-            this.WinStatusTool.Size = new System.Drawing.Size(136, 22);
+            this.WinStatusTool.Size = new System.Drawing.Size(180, 22);
             this.WinStatusTool.Text = "Выигрыш";
             // 
             // LoseStatusTool
             // 
             this.LoseStatusTool.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(187)))), ((int)(((byte)(181)))));
             this.LoseStatusTool.Name = "LoseStatusTool";
-            this.LoseStatusTool.Size = new System.Drawing.Size(136, 22);
+            this.LoseStatusTool.Size = new System.Drawing.Size(180, 22);
             this.LoseStatusTool.Text = "Проигрыш";
             // 
             // ReturnStatusTool
             // 
             this.ReturnStatusTool.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(211)))), ((int)(((byte)(239)))));
             this.ReturnStatusTool.Name = "ReturnStatusTool";
-            this.ReturnStatusTool.Size = new System.Drawing.Size(136, 22);
+            this.ReturnStatusTool.Size = new System.Drawing.Size(180, 22);
             this.ReturnStatusTool.Text = "Возврат";
             // 
             // ToolStrip2
             // 
             this.ToolStrip2.Name = "ToolStrip2";
-            this.ToolStrip2.Size = new System.Drawing.Size(162, 6);
+            this.ToolStrip2.Size = new System.Drawing.Size(177, 6);
             // 
             // SaveBetTool
             // 
@@ -180,7 +180,7 @@ namespace BetMaker
             this.SaveBetFileTool,
             this.SaveBetTelegramTool});
             this.SaveBetTool.Name = "SaveBetTool";
-            this.SaveBetTool.Size = new System.Drawing.Size(165, 22);
+            this.SaveBetTool.Size = new System.Drawing.Size(180, 22);
             this.SaveBetTool.Text = "Сохранить в";
             // 
             // SaveBetFileTool
@@ -193,7 +193,7 @@ namespace BetMaker
             // 
             this.SaveBetTelegramTool.Name = "SaveBetTelegramTool";
             this.SaveBetTelegramTool.Size = new System.Drawing.Size(187, 22);
-            this.SaveBetTelegramTool.Text = "Telegram";
+            this.SaveBetTelegramTool.Text = "Телеграм";
             // 
             // toolStrip3
             // 
@@ -212,13 +212,13 @@ namespace BetMaker
             // TeamTool
             // 
             this.TeamTool.Name = "TeamTool";
-            this.TeamTool.Size = new System.Drawing.Size(154, 22);
+            this.TeamTool.Size = new System.Drawing.Size(180, 22);
             this.TeamTool.Text = "Команды";
             // 
             // CompetitionTool
             // 
             this.CompetitionTool.Name = "CompetitionTool";
-            this.CompetitionTool.Size = new System.Drawing.Size(154, 22);
+            this.CompetitionTool.Size = new System.Drawing.Size(180, 22);
             this.CompetitionTool.Text = "Соревнования";
             // 
             // toolStrip4
