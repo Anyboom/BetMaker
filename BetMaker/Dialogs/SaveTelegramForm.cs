@@ -79,15 +79,16 @@ namespace BetMaker.Dialogs
                     BetStatus.NotCalculated => Settings.KeyExists("NotCalculated", "Status") ? Settings.Read("NotCalculated", "Status") : "Не расчитано",
                     BetStatus.Win => Settings.KeyExists("Win", "Status") ? Settings.Read("Win", "Status") : "Выигрыш",
                     BetStatus.Lose => Settings.KeyExists("Lose", "Status") ? Settings.Read("Lose", "Status") : "Проигрыш",
-                    BetStatus.Return => Settings.KeyExists("Return", "Status") ? Settings.Read("Return", "Status") : "Возврат"
+                    BetStatus.Return => Settings.KeyExists("Return", "Status") ? Settings.Read("Return", "Status") : "Возврат",
+                    _ => throw new NotImplementedException()
                 };
-
+                
                 result = result.Replace("{Id}", bet.Id.ToString());
                 result = result.Replace("{HomeTeam}", bet.HomeTeam.Name);
                 result = result.Replace("{GuestTeam}", bet.GuestTeam.Name);
-                result = result.Replace("{Prognosis}", bet.Prognosis.Name);
+                result = result.Replace("{Prognosis}", MarkdownService.ToText(bet.Prognosis.Name));
                 result = result.Replace("{Competition}", bet.Competition.Name);
-                result = result.Replace("{Coefficient}", bet.Coefficient.ToString());
+                result = result.Replace("{Coefficient}", bet.Coefficient.ToString("0.00"));
                 result = result.Replace("{Result}", statusBet);
                 result = result.Replace("{Author}", bet.Author);
                 result = result.Replace("{StartAt}", bet.StartAt.ToString("HH:mm | d MMM yyyy"));

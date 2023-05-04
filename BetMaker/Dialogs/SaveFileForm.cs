@@ -20,6 +20,10 @@ namespace BetMaker.Dialogs
 
             InitializeComponent();
 
+            ManyFileTextBox.Text = Settings.KeyExists("TemplateNameFile")
+                ? Settings.Read("TemplateNameFile")
+                : "{CreatedAt}-{HomeTeam}-{GuestTeam}.md";
+
             OpenPathButton.Click += (sender, args) => OpenPath();
             SaveButton.Click += (sender, args) =>
             {
@@ -74,7 +78,7 @@ namespace BetMaker.Dialogs
                 result = result.Replace("{GuestTeam}", bet.GuestTeam.Name);
                 result = result.Replace("{Prognosis}", bet.Prognosis.Name);
                 result = result.Replace("{Competition}", bet.Competition.Name);
-                result = result.Replace("{Coefficient}", bet.Coefficient.ToString());
+                result = result.Replace("{Coefficient}", bet.Coefficient.ToString("0.00"));
                 result = result.Replace("{Result}", bet.Result.ToString());
                 result = result.Replace("{Author}", bet.Author);
                 result = result.Replace("{StartAt}", bet.StartAt.ToString("HH:mm | d MMM yyyy"));
@@ -87,13 +91,13 @@ namespace BetMaker.Dialogs
                 pathResult = pathResult.Replace("{GuestTeam}", bet.GuestTeam.Name);
                 pathResult = pathResult.Replace("{Prognosis}", bet.Prognosis.Name);
                 pathResult = pathResult.Replace("{Competition}", bet.Competition.Name);
-                pathResult = pathResult.Replace("{Coefficient}", bet.Coefficient.ToString());
+                pathResult = pathResult.Replace("{Coefficient}", bet.Coefficient.ToString("0.00"));
                 pathResult = pathResult.Replace("{Result}", bet.Result.ToString());
                 pathResult = pathResult.Replace("{Author}", bet.Author);
                 pathResult = pathResult.Replace("{StartAt}", bet.StartAt.ToString("HH-mm-dd-MM-yyyy"));
                 pathResult = pathResult.Replace("{CreatedAt}", bet.CreatedAt.ToString("HH-mm-dd-MM-yyyy"));
 
-                File.WriteAllText(Path.Combine(pathBet, string.Concat(pathResult, ".txt")), result);
+                File.WriteAllText(Path.Combine(pathBet, pathResult), result);
             }
         }
 

@@ -33,12 +33,12 @@ namespace BetMaker.Dialogs
             this.TemplateTextBox = new System.Windows.Forms.TextBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.MainGroup = new System.Windows.Forms.GroupBox();
+            this.ManyFilesCheck = new System.Windows.Forms.CheckBox();
+            this.ManyFileTextBox = new System.Windows.Forms.TextBox();
             this.MarkersTemplateLinkLabel = new System.Windows.Forms.LinkLabel();
             this.OpenPathButton = new System.Windows.Forms.Button();
-            this.PathTemplateLabel = new System.Windows.Forms.Label();
             this.PathTemplateTextBox = new System.Windows.Forms.TextBox();
-            this.ManyFileTextBox = new System.Windows.Forms.TextBox();
-            this.ManyFilesCheck = new System.Windows.Forms.CheckBox();
+            this.PathTemplateLabel = new System.Windows.Forms.Label();
             this.MainGroup.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,6 +87,24 @@ namespace BetMaker.Dialogs
             this.MainGroup.TabIndex = 1;
             this.MainGroup.TabStop = false;
             // 
+            // ManyFilesCheck
+            // 
+            this.ManyFilesCheck.AutoSize = true;
+            this.ManyFilesCheck.Location = new System.Drawing.Point(13, 300);
+            this.ManyFilesCheck.Name = "ManyFilesCheck";
+            this.ManyFilesCheck.Size = new System.Drawing.Size(227, 19);
+            this.ManyFilesCheck.TabIndex = 10;
+            this.ManyFilesCheck.Text = "В разные файлы: ( шаблон файлов )";
+            this.ManyFilesCheck.UseVisualStyleBackColor = true;
+            // 
+            // ManyFileTextBox
+            // 
+            this.ManyFileTextBox.Enabled = false;
+            this.ManyFileTextBox.Location = new System.Drawing.Point(13, 325);
+            this.ManyFileTextBox.Name = "ManyFileTextBox";
+            this.ManyFileTextBox.Size = new System.Drawing.Size(298, 23);
+            this.ManyFileTextBox.TabIndex = 9;
+            // 
             // MarkersTemplateLinkLabel
             // 
             this.MarkersTemplateLinkLabel.AutoSize = true;
@@ -106,15 +124,6 @@ namespace BetMaker.Dialogs
             this.OpenPathButton.Text = "О";
             this.OpenPathButton.UseVisualStyleBackColor = true;
             // 
-            // PathTemplateLabel
-            // 
-            this.PathTemplateLabel.AutoSize = true;
-            this.PathTemplateLabel.Location = new System.Drawing.Point(13, 26);
-            this.PathTemplateLabel.Name = "PathTemplateLabel";
-            this.PathTemplateLabel.Size = new System.Drawing.Size(99, 15);
-            this.PathTemplateLabel.TabIndex = 3;
-            this.PathTemplateLabel.Text = "Путь к шаблону:";
-            // 
             // PathTemplateTextBox
             // 
             this.PathTemplateTextBox.Enabled = false;
@@ -124,23 +133,14 @@ namespace BetMaker.Dialogs
             this.PathTemplateTextBox.Size = new System.Drawing.Size(275, 23);
             this.PathTemplateTextBox.TabIndex = 4;
             // 
-            // ManyFileTextBox
+            // PathTemplateLabel
             // 
-            this.ManyFileTextBox.Location = new System.Drawing.Point(13, 325);
-            this.ManyFileTextBox.Name = "ManyFileTextBox";
-            this.ManyFileTextBox.Size = new System.Drawing.Size(298, 23);
-            this.ManyFileTextBox.TabIndex = 9;
-            this.ManyFileTextBox.Text = "{CreatedAt}-{HomeTeam}-{GuestTeam}";
-            // 
-            // ManyFilesCheck
-            // 
-            this.ManyFilesCheck.AutoSize = true;
-            this.ManyFilesCheck.Location = new System.Drawing.Point(13, 300);
-            this.ManyFilesCheck.Name = "ManyFilesCheck";
-            this.ManyFilesCheck.Size = new System.Drawing.Size(227, 19);
-            this.ManyFilesCheck.TabIndex = 10;
-            this.ManyFilesCheck.Text = "В разные файлы: ( шаблон файлов )";
-            this.ManyFilesCheck.UseVisualStyleBackColor = true;
+            this.PathTemplateLabel.AutoSize = true;
+            this.PathTemplateLabel.Location = new System.Drawing.Point(13, 26);
+            this.PathTemplateLabel.Name = "PathTemplateLabel";
+            this.PathTemplateLabel.Size = new System.Drawing.Size(99, 15);
+            this.PathTemplateLabel.TabIndex = 3;
+            this.PathTemplateLabel.Text = "Путь к шаблону:";
             // 
             // SaveFileForm
             // 
