@@ -70,28 +70,33 @@ namespace BetMaker.Dialogs
 
             TelegramBotClient client = new TelegramBotClient(Settings.Read("Token", "Telegram"));
 
+            string createdAtTemplate = Settings.KeyExists("TemplateCreatedAt")
+                ? Settings.Read("TemplateCreatedAt")
+                : "HH:mm | d MMM yyyy",
+                createdAtFileTemplate = Settings.KeyExists("TemplateCreatedAtFile")
+                ? Settings.Read("TemplateCreatedAtFile")
+                : "HH-mm-dd-MM-yyyy",
+                startAtTemplate = Settings.KeyExists("TemplateStartAt")
+                ? Settings.Read("TemplateStartAt")
+                : "HH:mm | d MMM yyyy",
+                startAtFileTemplate = Settings.KeyExists("TemplateStartAtFile")
+                ? Settings.Read("TemplateStartAtFile")
+                : "HH-mm-dd-MM-yyyy";
+
             foreach (Bet bet in bets)
             {
                 string result = TemplateTextBox.Text;
 
-                string statusBet = bet.Result switch
-                {
-                    BetStatus.NotCalculated => Settings.KeyExists("NotCalculated", "Status") ? Settings.Read("NotCalculated", "Status") : "Не расчитано",
-                    BetStatus.Win => Settings.KeyExists("Win", "Status") ? Settings.Read("Win", "Status") : "Выигрыш",
-                    BetStatus.Lose => Settings.KeyExists("Lose", "Status") ? Settings.Read("Lose", "Status") : "Проигрыш",
-                    BetStatus.Return => Settings.KeyExists("Return", "Status") ? Settings.Read("Return", "Status") : "Возврат",
-                    _ => throw new NotImplementedException()
-                };
-                
                 result = result.Replace("{Id}", bet.Id.ToString());
                 result = result.Replace("{HomeTeam}", bet.HomeTeam.Name);
                 result = result.Replace("{GuestTeam}", bet.GuestTeam.Name);
                 result = result.Replace("{Prognosis}", MarkdownService.ToText(bet.Prognosis.Name));
                 result = result.Replace("{Competition}", bet.Competition.Name);
                 result = result.Replace("{Coefficient}", bet.Coefficient.ToString("0.00"));
-                result = result.Replace("{Result}", statusBet);
+                result = result.Replace("{Result}", bet.Result.ToString());
                 result = result.Replace("{Author}", bet.Author);
-                result = result.Replace("{StartAt}", bet.StartAt.ToString("HH:mm | d MMM yyyy"));
+                result = result.Replace("{StartAt}", bet.StartAt.ToString(startAtTemplate));
+                result = result.Replace("{CreatedAt}", bet.CreatedAt.ToString(createdAtTemplate));
 
                 try
                 {

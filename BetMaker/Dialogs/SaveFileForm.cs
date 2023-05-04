@@ -69,6 +69,19 @@ namespace BetMaker.Dialogs
 
             List<Bet> bets = db.GetCollection<Bet>("Bet").Find(x => Ids.Contains(x.Id)).ToList();
 
+            string createdAtTemplate = Settings.KeyExists("TemplateCreatedAt")
+                ? Settings.Read("TemplateCreatedAt")
+                : "HH:mm | d MMM yyyy",
+                createdAtFileTemplate = Settings.KeyExists("TemplateCreatedAtFile")
+                ? Settings.Read("TemplateCreatedAtFile")
+                : "HH-mm-dd-MM-yyyy",
+                startAtTemplate = Settings.KeyExists("TemplateStartAt")
+                ? Settings.Read("TemplateStartAt")
+                : "HH:mm | d MMM yyyy",
+                startAtFileTemplate = Settings.KeyExists("TemplateStartAtFile")
+                ? Settings.Read("TemplateStartAtFile")
+                : "HH-mm-dd-MM-yyyy";
+
             foreach (Bet bet in bets)
             {
                 string result = TemplateTextBox.Text;
@@ -81,8 +94,8 @@ namespace BetMaker.Dialogs
                 result = result.Replace("{Coefficient}", bet.Coefficient.ToString("0.00"));
                 result = result.Replace("{Result}", bet.Result.ToString());
                 result = result.Replace("{Author}", bet.Author);
-                result = result.Replace("{StartAt}", bet.StartAt.ToString("HH:mm | d MMM yyyy"));
-                result = result.Replace("{CreatedAt}", bet.CreatedAt.ToString("HH:mm | d MMM yyyy"));
+                result = result.Replace("{StartAt}", bet.StartAt.ToString(startAtTemplate));
+                result = result.Replace("{CreatedAt}", bet.CreatedAt.ToString(createdAtTemplate));
 
                 string pathResult = ManyFileTextBox.Text;
 
@@ -94,8 +107,8 @@ namespace BetMaker.Dialogs
                 pathResult = pathResult.Replace("{Coefficient}", bet.Coefficient.ToString("0.00"));
                 pathResult = pathResult.Replace("{Result}", bet.Result.ToString());
                 pathResult = pathResult.Replace("{Author}", bet.Author);
-                pathResult = pathResult.Replace("{StartAt}", bet.StartAt.ToString("HH-mm-dd-MM-yyyy"));
-                pathResult = pathResult.Replace("{CreatedAt}", bet.CreatedAt.ToString("HH-mm-dd-MM-yyyy"));
+                pathResult = pathResult.Replace("{StartAt}", bet.StartAt.ToString(startAtFileTemplate));
+                pathResult = pathResult.Replace("{CreatedAt}", bet.CreatedAt.ToString(createdAtFileTemplate));
 
                 File.WriteAllText(Path.Combine(pathBet, pathResult), result);
             }
@@ -137,6 +150,19 @@ namespace BetMaker.Dialogs
 
             DialogResult dialogResult = saveFileDialog.ShowDialog();
 
+            string createdAtTemplate = Settings.KeyExists("TemplateCreatedAt")
+                ? Settings.Read("TemplateCreatedAt")
+                : "HH:mm | d MMM yyyy",
+                createdAtFileTemplate = Settings.KeyExists("TemplateCreatedAtFile")
+                ? Settings.Read("TemplateCreatedAtFile")
+                : "HH-mm-dd-MM-yyyy",
+                startAtTemplate = Settings.KeyExists("TemplateStartAt")
+                ? Settings.Read("TemplateStartAt")
+                : "HH:mm | d MMM yyyy",
+                startAtFileTemplate = Settings.KeyExists("TemplateStartAtFile")
+                ? Settings.Read("TemplateStartAtFile")
+                : "HH-mm-dd-MM-yyyy";
+
             if (dialogResult == DialogResult.OK)
             {
                 path = saveFileDialog.FileName;
@@ -150,11 +176,11 @@ namespace BetMaker.Dialogs
                     result = result.Replace("{GuestTeam}", bet.GuestTeam.Name);
                     result = result.Replace("{Prognosis}", bet.Prognosis.Name);
                     result = result.Replace("{Competition}", bet.Competition.Name);
-                    result = result.Replace("{Coefficient}", bet.Coefficient.ToString());
+                    result = result.Replace("{Coefficient}", bet.Coefficient.ToString("0.00"));
                     result = result.Replace("{Result}", bet.Result.ToString());
                     result = result.Replace("{Author}", bet.Author);
-                    result = result.Replace("{StartAt}", bet.StartAt.ToString("HH:mm | d MMM yyyy"));
-                    result = result.Replace("{CreatedAt}", bet.CreatedAt.ToString("HH:mm | d MMM yyyy"));
+                    result = result.Replace("{StartAt}", bet.StartAt.ToString(startAtTemplate));
+                    result = result.Replace("{CreatedAt}", bet.CreatedAt.ToString(createdAtTemplate));
 
                     File.AppendAllText(path, result);
                 }
