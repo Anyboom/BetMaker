@@ -29,133 +29,132 @@ namespace BetMaker.Dialogs
         /// </summary>
         private void InitializeComponent()
         {
-            this.TemplateLabel = new System.Windows.Forms.Label();
-            this.TemplateTextBox = new System.Windows.Forms.TextBox();
-            this.SaveButton = new System.Windows.Forms.Button();
-            this.MainGroup = new System.Windows.Forms.GroupBox();
-            this.ManyFilesCheck = new System.Windows.Forms.CheckBox();
-            this.ManyFileTextBox = new System.Windows.Forms.TextBox();
-            this.MarkersTemplateLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.OpenPathButton = new System.Windows.Forms.Button();
-            this.PathTemplateTextBox = new System.Windows.Forms.TextBox();
-            this.PathTemplateLabel = new System.Windows.Forms.Label();
-            this.MainGroup.SuspendLayout();
-            this.SuspendLayout();
+            TemplateLabel = new System.Windows.Forms.Label();
+            TemplateTextBox = new System.Windows.Forms.TextBox();
+            SaveButton = new System.Windows.Forms.Button();
+            MainGroup = new System.Windows.Forms.GroupBox();
+            ManyFilesCheck = new System.Windows.Forms.CheckBox();
+            ManyFileTextBox = new System.Windows.Forms.TextBox();
+            MarkersTemplateLinkLabel = new System.Windows.Forms.LinkLabel();
+            OpenPathButton = new System.Windows.Forms.Button();
+            PathTemplateTextBox = new System.Windows.Forms.TextBox();
+            PathTemplateLabel = new System.Windows.Forms.Label();
+            MainGroup.SuspendLayout();
+            SuspendLayout();
             // 
             // TemplateLabel
             // 
-            this.TemplateLabel.AutoSize = true;
-            this.TemplateLabel.Location = new System.Drawing.Point(13, 70);
-            this.TemplateLabel.Name = "TemplateLabel";
-            this.TemplateLabel.Size = new System.Drawing.Size(55, 15);
-            this.TemplateLabel.TabIndex = 0;
-            this.TemplateLabel.Text = "Шаблон:";
+            TemplateLabel.AutoSize = true;
+            TemplateLabel.Location = new System.Drawing.Point(13, 70);
+            TemplateLabel.Name = "TemplateLabel";
+            TemplateLabel.Size = new System.Drawing.Size(55, 15);
+            TemplateLabel.TabIndex = 0;
+            TemplateLabel.Text = "Шаблон:";
             // 
             // TemplateTextBox
             // 
-            this.TemplateTextBox.Location = new System.Drawing.Point(13, 88);
-            this.TemplateTextBox.Multiline = true;
-            this.TemplateTextBox.Name = "TemplateTextBox";
-            this.TemplateTextBox.ReadOnly = true;
-            this.TemplateTextBox.Size = new System.Drawing.Size(298, 206);
-            this.TemplateTextBox.TabIndex = 1;
+            TemplateTextBox.Location = new System.Drawing.Point(13, 88);
+            TemplateTextBox.Multiline = true;
+            TemplateTextBox.Name = "TemplateTextBox";
+            TemplateTextBox.ReadOnly = true;
+            TemplateTextBox.Size = new System.Drawing.Size(298, 206);
+            TemplateTextBox.TabIndex = 1;
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(237, 354);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(75, 23);
-            this.SaveButton.TabIndex = 2;
-            this.SaveButton.Text = "Сохранить";
-            this.SaveButton.UseVisualStyleBackColor = true;
+            SaveButton.Location = new System.Drawing.Point(237, 354);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new System.Drawing.Size(75, 23);
+            SaveButton.TabIndex = 2;
+            SaveButton.Text = "Сохранить";
+            SaveButton.UseVisualStyleBackColor = true;
             // 
             // MainGroup
             // 
-            this.MainGroup.Controls.Add(this.ManyFilesCheck);
-            this.MainGroup.Controls.Add(this.ManyFileTextBox);
-            this.MainGroup.Controls.Add(this.MarkersTemplateLinkLabel);
-            this.MainGroup.Controls.Add(this.SaveButton);
-            this.MainGroup.Controls.Add(this.OpenPathButton);
-            this.MainGroup.Controls.Add(this.TemplateTextBox);
-            this.MainGroup.Controls.Add(this.PathTemplateTextBox);
-            this.MainGroup.Controls.Add(this.TemplateLabel);
-            this.MainGroup.Controls.Add(this.PathTemplateLabel);
-            this.MainGroup.Location = new System.Drawing.Point(12, 12);
-            this.MainGroup.Name = "MainGroup";
-            this.MainGroup.Padding = new System.Windows.Forms.Padding(10);
-            this.MainGroup.Size = new System.Drawing.Size(325, 387);
-            this.MainGroup.TabIndex = 1;
-            this.MainGroup.TabStop = false;
+            MainGroup.Controls.Add(ManyFilesCheck);
+            MainGroup.Controls.Add(ManyFileTextBox);
+            MainGroup.Controls.Add(MarkersTemplateLinkLabel);
+            MainGroup.Controls.Add(SaveButton);
+            MainGroup.Controls.Add(OpenPathButton);
+            MainGroup.Controls.Add(TemplateTextBox);
+            MainGroup.Controls.Add(PathTemplateTextBox);
+            MainGroup.Controls.Add(TemplateLabel);
+            MainGroup.Controls.Add(PathTemplateLabel);
+            MainGroup.Location = new System.Drawing.Point(12, 12);
+            MainGroup.Name = "MainGroup";
+            MainGroup.Padding = new System.Windows.Forms.Padding(10);
+            MainGroup.Size = new System.Drawing.Size(325, 387);
+            MainGroup.TabIndex = 1;
+            MainGroup.TabStop = false;
             // 
             // ManyFilesCheck
             // 
-            this.ManyFilesCheck.AutoSize = true;
-            this.ManyFilesCheck.Location = new System.Drawing.Point(13, 300);
-            this.ManyFilesCheck.Name = "ManyFilesCheck";
-            this.ManyFilesCheck.Size = new System.Drawing.Size(227, 19);
-            this.ManyFilesCheck.TabIndex = 10;
-            this.ManyFilesCheck.Text = "В разные файлы: ( шаблон файлов )";
-            this.ManyFilesCheck.UseVisualStyleBackColor = true;
+            ManyFilesCheck.AutoSize = true;
+            ManyFilesCheck.Location = new System.Drawing.Point(13, 300);
+            ManyFilesCheck.Name = "ManyFilesCheck";
+            ManyFilesCheck.Size = new System.Drawing.Size(227, 19);
+            ManyFilesCheck.TabIndex = 10;
+            ManyFilesCheck.Text = "В разные файлы: ( шаблон файлов )";
+            ManyFilesCheck.UseVisualStyleBackColor = true;
             // 
             // ManyFileTextBox
             // 
-            this.ManyFileTextBox.Enabled = false;
-            this.ManyFileTextBox.Location = new System.Drawing.Point(13, 325);
-            this.ManyFileTextBox.Name = "ManyFileTextBox";
-            this.ManyFileTextBox.Size = new System.Drawing.Size(298, 23);
-            this.ManyFileTextBox.TabIndex = 9;
+            ManyFileTextBox.Enabled = false;
+            ManyFileTextBox.Location = new System.Drawing.Point(13, 325);
+            ManyFileTextBox.Name = "ManyFileTextBox";
+            ManyFileTextBox.Size = new System.Drawing.Size(298, 23);
+            ManyFileTextBox.TabIndex = 9;
             // 
             // MarkersTemplateLinkLabel
             // 
-            this.MarkersTemplateLinkLabel.AutoSize = true;
-            this.MarkersTemplateLinkLabel.Location = new System.Drawing.Point(13, 358);
-            this.MarkersTemplateLinkLabel.Name = "MarkersTemplateLinkLabel";
-            this.MarkersTemplateLinkLabel.Size = new System.Drawing.Size(135, 15);
-            this.MarkersTemplateLinkLabel.TabIndex = 6;
-            this.MarkersTemplateLinkLabel.TabStop = true;
-            this.MarkersTemplateLinkLabel.Text = "Маркеры для шаблона";
+            MarkersTemplateLinkLabel.AutoSize = true;
+            MarkersTemplateLinkLabel.Location = new System.Drawing.Point(13, 358);
+            MarkersTemplateLinkLabel.Name = "MarkersTemplateLinkLabel";
+            MarkersTemplateLinkLabel.Size = new System.Drawing.Size(135, 15);
+            MarkersTemplateLinkLabel.TabIndex = 6;
+            MarkersTemplateLinkLabel.TabStop = true;
+            MarkersTemplateLinkLabel.Text = "Маркеры для шаблона";
             // 
             // OpenPathButton
             // 
-            this.OpenPathButton.Location = new System.Drawing.Point(286, 43);
-            this.OpenPathButton.Name = "OpenPathButton";
-            this.OpenPathButton.Size = new System.Drawing.Size(25, 25);
-            this.OpenPathButton.TabIndex = 5;
-            this.OpenPathButton.Text = "О";
-            this.OpenPathButton.UseVisualStyleBackColor = true;
+            OpenPathButton.Location = new System.Drawing.Point(286, 43);
+            OpenPathButton.Name = "OpenPathButton";
+            OpenPathButton.Size = new System.Drawing.Size(25, 25);
+            OpenPathButton.TabIndex = 5;
+            OpenPathButton.Text = "О";
+            OpenPathButton.UseVisualStyleBackColor = true;
             // 
             // PathTemplateTextBox
             // 
-            this.PathTemplateTextBox.Enabled = false;
-            this.PathTemplateTextBox.Location = new System.Drawing.Point(13, 44);
-            this.PathTemplateTextBox.Name = "PathTemplateTextBox";
-            this.PathTemplateTextBox.ReadOnly = true;
-            this.PathTemplateTextBox.Size = new System.Drawing.Size(275, 23);
-            this.PathTemplateTextBox.TabIndex = 4;
+            PathTemplateTextBox.Enabled = false;
+            PathTemplateTextBox.Location = new System.Drawing.Point(13, 44);
+            PathTemplateTextBox.Name = "PathTemplateTextBox";
+            PathTemplateTextBox.ReadOnly = true;
+            PathTemplateTextBox.Size = new System.Drawing.Size(275, 23);
+            PathTemplateTextBox.TabIndex = 4;
             // 
             // PathTemplateLabel
             // 
-            this.PathTemplateLabel.AutoSize = true;
-            this.PathTemplateLabel.Location = new System.Drawing.Point(13, 26);
-            this.PathTemplateLabel.Name = "PathTemplateLabel";
-            this.PathTemplateLabel.Size = new System.Drawing.Size(99, 15);
-            this.PathTemplateLabel.TabIndex = 3;
-            this.PathTemplateLabel.Text = "Путь к шаблону:";
+            PathTemplateLabel.AutoSize = true;
+            PathTemplateLabel.Location = new System.Drawing.Point(13, 26);
+            PathTemplateLabel.Name = "PathTemplateLabel";
+            PathTemplateLabel.Size = new System.Drawing.Size(99, 15);
+            PathTemplateLabel.TabIndex = 3;
+            PathTemplateLabel.Text = "Путь к шаблону:";
             // 
             // SaveFileForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 411);
-            this.Controls.Add(this.MainGroup);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "SaveFileForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Сохранение ставок [ФАЙЛ]";
-            this.MainGroup.ResumeLayout(false);
-            this.MainGroup.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(349, 411);
+            Controls.Add(MainGroup);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            Name = "SaveFileForm";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Text = "Сохранение ставок [ФАЙЛ]";
+            MainGroup.ResumeLayout(false);
+            MainGroup.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

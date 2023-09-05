@@ -50,7 +50,6 @@ namespace BetMaker
             SaveBetFileTool.Click += (sender, args) => SaveBetFile();
             SaveBetTelegramTool.Click += (sender, args) => SaveBetTelegram();
 
-            SettingsTableTool.Click += (sender, args) => UpdateSettings();
             TeamTool.Click += (sender, args) => UpdateTeams();
             CompetitionTool.Click += (sender, args) => UpdateCompetition();
 
@@ -69,13 +68,6 @@ namespace BetMaker
             TeamForm teamForm = new TeamForm();
 
             teamForm.ShowDialog();
-        }
-
-        private void UpdateSettings()
-        {
-            SettingsForm settingsForm = new SettingsForm();
-
-            settingsForm.ShowDialog();
         }
 
         private void SaveBetTelegram()

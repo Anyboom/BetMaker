@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 using BetMaker.Models;
@@ -14,6 +16,8 @@ namespace BetMaker.Dialogs
     public partial class SaveFileForm : Form
     {
         private List<int> Ids;
+        private Regex startedAtRegex = new Regex("{StartedAt([:]?)([A-Za-z \\/:|-]*)}");
+        private Regex createdAtRegex = new Regex("{CreatedAt([:]?)([A-Za-z \\/:|-]*)}");
         public SaveFileForm(List<int> ids)
         {
             this.Ids = ids;
@@ -22,7 +26,7 @@ namespace BetMaker.Dialogs
 
             ManyFileTextBox.Text = Settings.KeyExists("TemplateNameFile")
                 ? Settings.Read("TemplateNameFile")
-                : "{CreatedAt}-{HomeTeam}-{GuestTeam}.md";
+                : "{CreatedAt:hh:mm}-{HomeTeam}-{GuestTeam}.md";
 
             OpenPathButton.Click += (sender, args) => OpenPath();
             SaveButton.Click += (sender, args) =>
@@ -37,7 +41,11 @@ namespace BetMaker.Dialogs
                 }
 
             };
-            MarkersTemplateLinkLabel.Click += (sender, args) => ShowHelp();
+            MarkersTemplateLinkLabel.Click += (sender, args) =>
+            {
+                MessageService.ShowInfo(Settings.ShowHelp);
+            };
+
             ManyFilesCheck.CheckStateChanged += (sender, args) =>
             {
                 ManyFileTextBox.Enabled = ManyFilesCheck.Checked;
@@ -48,6 +56,15 @@ namespace BetMaker.Dialogs
         {
             if (string.IsNullOrWhiteSpace(ManyFileTextBox.Text) || string.IsNullOrWhiteSpace(PathTemplateTextBox.Text) || string.IsNullOrWhiteSpace(TemplateTextBox.Text))
             {
+                return;
+            }
+
+            if ("/\\*?:\"|<>".ToCharArray().Any(x =>
+            {
+                return ManyFileTextBox.Text.Contains(x);
+            }))
+            {
+                MessageService.ShowError($"Были использованы запрещенные символы в название файла в шаблоне: [/\\*?:\"|<>]");
                 return;
             }
 
@@ -69,19 +86,6 @@ namespace BetMaker.Dialogs
 
             List<Bet> bets = db.GetCollection<Bet>("Bet").Find(x => Ids.Contains(x.Id)).ToList();
 
-            string createdAtTemplate = Settings.KeyExists("TemplateCreatedAt")
-                ? Settings.Read("TemplateCreatedAt")
-                : "HH:mm | d MMM yyyy",
-                createdAtFileTemplate = Settings.KeyExists("TemplateCreatedAtFile")
-                ? Settings.Read("TemplateCreatedAtFile")
-                : "HH-mm-dd-MM-yyyy",
-                startAtTemplate = Settings.KeyExists("TemplateStartAt")
-                ? Settings.Read("TemplateStartAt")
-                : "HH:mm | d MMM yyyy",
-                startAtFileTemplate = Settings.KeyExists("TemplateStartAtFile")
-                ? Settings.Read("TemplateStartAtFile")
-                : "HH-mm-dd-MM-yyyy";
-
             foreach (Bet bet in bets)
             {
                 string result = TemplateTextBox.Text;
@@ -94,8 +98,20 @@ namespace BetMaker.Dialogs
                 result = result.Replace("{Coefficient}", bet.Coefficient.ToString("0.00"));
                 result = result.Replace("{Result}", bet.Result.ToString());
                 result = result.Replace("{Author}", bet.Author);
-                result = result.Replace("{StartAt}", bet.StartAt.ToString(startAtTemplate));
-                result = result.Replace("{CreatedAt}", bet.CreatedAt.ToString(createdAtTemplate));
+
+                foreach (Match match in startedAtRegex.Matches(result))
+                {
+                    string resultFormat = match.Groups[2].Value;
+
+                    result = result.Replace(match.Value, bet.StartAt.ToString(resultFormat));
+                }
+
+                foreach (Match match in createdAtRegex.Matches(result))
+                {
+                    string resultFormat = match.Groups[2].Value;
+
+                    result = result.Replace(match.Value, bet.CreatedAt.ToString(resultFormat));
+                }
 
                 string pathResult = ManyFileTextBox.Text;
 
@@ -107,28 +123,25 @@ namespace BetMaker.Dialogs
                 pathResult = pathResult.Replace("{Coefficient}", bet.Coefficient.ToString("0.00"));
                 pathResult = pathResult.Replace("{Result}", bet.Result.ToString());
                 pathResult = pathResult.Replace("{Author}", bet.Author);
-                pathResult = pathResult.Replace("{StartAt}", bet.StartAt.ToString(startAtFileTemplate));
-                pathResult = pathResult.Replace("{CreatedAt}", bet.CreatedAt.ToString(createdAtFileTemplate));
+
+                foreach (Match match in startedAtRegex.Matches(pathResult))
+                {
+                    string resultFormat = match.Groups[2].Value;
+
+                    pathResult = pathResult.Replace(match.Value, bet.StartAt.ToString(resultFormat));
+                }
+
+                foreach (Match match in createdAtRegex.Matches(pathResult))
+                {
+                    string resultFormat = match.Groups[2].Value;
+
+                    pathResult = pathResult.Replace(match.Value, bet.CreatedAt.ToString(resultFormat));
+                }
+
 
                 File.WriteAllText(Path.Combine(pathBet, pathResult), result);
+
             }
-        }
-
-        private void ShowHelp()
-        {
-            StringBuilder stringHelp = new StringBuilder();
-            stringHelp.AppendLine("{Id} - идентификатор ставки");
-            stringHelp.AppendLine("{HomeTeam} - домашняя команда");
-            stringHelp.AppendLine("{GuestTeam} - гостевая команда");
-            stringHelp.AppendLine("{Prognosis} - прогноз");
-            stringHelp.AppendLine("{Competition} - название сореванования");
-            stringHelp.AppendLine("{Coefficient} - коэффициент");
-            stringHelp.AppendLine("{Result} - результат");
-            stringHelp.AppendLine("{StartAt} - начало матча");
-            stringHelp.AppendLine("{CreatedAt} - дата и время создания ставки");
-            stringHelp.AppendLine("{Author} - автор ставки");
-
-            MessageService.ShowInfo(stringHelp.ToString());
         }
 
         private void SaveBet()
@@ -150,19 +163,6 @@ namespace BetMaker.Dialogs
 
             DialogResult dialogResult = saveFileDialog.ShowDialog();
 
-            string createdAtTemplate = Settings.KeyExists("TemplateCreatedAt")
-                ? Settings.Read("TemplateCreatedAt")
-                : "HH:mm | d MMM yyyy",
-                createdAtFileTemplate = Settings.KeyExists("TemplateCreatedAtFile")
-                ? Settings.Read("TemplateCreatedAtFile")
-                : "HH-mm-dd-MM-yyyy",
-                startAtTemplate = Settings.KeyExists("TemplateStartAt")
-                ? Settings.Read("TemplateStartAt")
-                : "HH:mm | d MMM yyyy",
-                startAtFileTemplate = Settings.KeyExists("TemplateStartAtFile")
-                ? Settings.Read("TemplateStartAtFile")
-                : "HH-mm-dd-MM-yyyy";
-
             if (dialogResult == DialogResult.OK)
             {
                 path = saveFileDialog.FileName;
@@ -179,8 +179,21 @@ namespace BetMaker.Dialogs
                     result = result.Replace("{Coefficient}", bet.Coefficient.ToString("0.00"));
                     result = result.Replace("{Result}", bet.Result.ToString());
                     result = result.Replace("{Author}", bet.Author);
-                    result = result.Replace("{StartAt}", bet.StartAt.ToString(startAtTemplate));
-                    result = result.Replace("{CreatedAt}", bet.CreatedAt.ToString(createdAtTemplate));
+
+                    foreach (Match match in startedAtRegex.Matches(result))
+                    {
+                        string resultFormat = match.Groups[2].Value;
+
+                        result = result.Replace(match.Value, bet.StartAt.ToString(resultFormat));
+                    }
+
+                    foreach (Match match in createdAtRegex.Matches(result))
+                    {
+                        string resultFormat = match.Groups[2].Value;
+
+                        result = result.Replace(match.Value, bet.CreatedAt.ToString(resultFormat));
+                    }
+
 
                     File.AppendAllText(path, result);
                 }

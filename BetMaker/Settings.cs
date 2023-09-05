@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using BetMaker.Services;
+using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -9,6 +10,25 @@ namespace BetMaker
     {
         public static string PathDatabase = "BetMaker.db";
         public static string TitleProject = "BetMaker";
+        public static string ShowHelp
+        {
+            get
+            {
+                StringBuilder stringHelp = new StringBuilder();
+                stringHelp.AppendLine("{Id} - идентификатор ставки");
+                stringHelp.AppendLine("{HomeTeam} - домашняя команда");
+                stringHelp.AppendLine("{GuestTeam} - гостевая команда");
+                stringHelp.AppendLine("{Prognosis} - прогноз");
+                stringHelp.AppendLine("{Competition} - название сореванования");
+                stringHelp.AppendLine("{Coefficient} - коэффициент");
+                stringHelp.AppendLine("{Result} - результат");
+                stringHelp.AppendLine("{StartAt} - начало матча");
+                stringHelp.AppendLine("{CreatedAt} - дата и время создания ставки");
+                stringHelp.AppendLine("{Author} - автор ставки");
+
+                return stringHelp.ToString();
+            }
+        }
 
         static string EXE = Assembly.GetExecutingAssembly().GetName().Name;
 
